@@ -1,0 +1,572 @@
+{
+  "students": [
+    {
+      "personal_information": {
+        "first_name": "Ana María",
+        "last_name": "González",
+        "second_last_name": "Pérez",
+        "birth_date": "1999-03-12",
+        "gender": "female",
+        "photo": "https://universidad.edu.mx/fotos/AMGP990312.jpg",
+        "digital_signature": "https://universidad.edu.mx/firmas/AMGP990312.png",
+        "role": "student"
+      },
+      "contact_information": {
+        "phone": "5551234567",
+        "cell_phone": "5559876543",
+        "personal_email": "ana.gonzalez@gmail.com",
+        "institutional_email": "a.gonzalezp@alumnos.universidad.edu.mx",
+        "preferred_contact_method": "whatsapp"
+      },
+      "identification": {
+        "curp": "GOPA990312MDFNRN08",
+        "identity_number": "IDMX87654321",
+        "nationality": "MX"
+      },
+      "student_profile": {
+        "student_id": "20240123",
+        "career_code": "ING-SIS-2022",
+        "admission_type": "regular",
+        "admission_period_term_code": "2024-1",
+        "study_modality": "schooling",
+        "shift": "morning",
+        "campus": "Campus Norte",
+        "current_period_term_code": "2024-2",
+        "study_plan_name": "Ingeniería en Sistemas Computacionales",
+        "study_plan_version": "2022",
+        "enrollment_date": "2024-08-15",
+        "expected_graduation_date": "2028-06-30",
+        "education_level": "undergraduate",
+        "credits_approved": 45,
+        "periods_completed": 2,
+        "academic_status": "active"
+      },
+      "academic_profile": {
+        "previous_school": "Preparatoria Nacional",
+        "study_interest": "Desarrollo de software y inteligencia artificial",
+        "academic_offer": "Licenciatura"
+      },
+      "admission_data": {
+        "found_out_through": "redes sociales",
+        "educational_advisor": "Lic. Patricia Ramírez",
+        "comments": "Interesada en investigación y desarrollo tecnológico"
+      },
+      "enrollments": [
+        {
+          "subject_code": "MAT101",
+          "period_term_code": "2024-1",
+          "enrollment_date": "2024-08-15",
+          "final_grade": 9.5,
+          "status": "approved",
+          "attempt_number": 1,
+          "group": "A1",
+          "professor_id": "PROF001"
+        },
+        {
+          "subject_code": "PROG101",
+          "period_term_code": "2024-1",
+          "enrollment_date": "2024-08-15",
+          "final_grade": 8.8,
+          "status": "approved",
+          "attempt_number": 1,
+          "group": "B2",
+          "professor_id": "PROF002"
+        },
+        {
+          "subject_code": "FIS101",
+          "period_term_code": "2024-2",
+          "enrollment_date": "2025-01-10",
+          "status": "in_progress",
+          "attempt_number": 1,
+          "group": "A3",
+          "professor_id": "PROF003"
+        }
+      ],
+      "academic_records": [
+        {
+          "period_term_code": "2024-1",
+          "status": "active",
+          "start_date": "2024-08-15",
+          "end_date": "2024-12-10",
+          "is_regular": true,
+          "scholarship": "excelencia académica",
+          "average": 9.15
+        },
+        {
+          "period_term_code": "2024-2",
+          "status": "active",
+          "start_date": "2025-01-10",
+          "is_regular": true,
+          "scholarship": "excelencia académica"
+        }
+      ],
+      "financial_information": {
+        "total_debt": 15000.00,
+        "overdue_balance": 0.00,
+        "last_payment_date": "2025-01-05",
+        "last_payment_amount": 3500.00,
+        "payment_plan": "mensual",
+        "scholarship": "excelencia académica",
+        "discount": 20.00,
+        "payments": [
+          {
+            "payment_type": "enrollment",
+            "amount": 5000.00,
+            "payment_date": "2024-08-10",
+            "status": "completed",
+            "period_term_code": "2024-1",
+            "receipt_number": "FAC-2024-00123",
+            "payment_method": "transferencia bancaria",
+            "description": "Inscripción semestre 2024-1",
+            "due_date": "2024-08-15"
+          },
+          {
+            "payment_type": "monthly",
+            "amount": 3500.00,
+            "payment_date": "2024-09-05",
+            "status": "completed",
+            "period_term_code": "2024-1",
+            "receipt_number": "FAC-2024-00234",
+            "payment_method": "tarjeta de crédito",
+            "description": "Colegiatura septiembre 2024",
+            "due_date": "2024-09-05"
+          },
+          {
+            "payment_type": "monthly",
+            "amount": 3500.00,
+            "payment_date": "2025-01-05",
+            "status": "completed",
+            "period_term_code": "2024-2",
+            "receipt_number": "FAC-2025-00012",
+            "payment_method": "efectivo",
+            "description": "Colegiatura enero 2025",
+            "due_date": "2025-01-05"
+          },
+          {
+            "payment_type": "lab",
+            "amount": 800.00,
+            "payment_date": "2025-01-10",
+            "status": "pending",
+            "period_term_code": "2024-2",
+            "receipt_number": "FAC-2025-00045",
+            "payment_method": "por definir",
+            "description": "Cuota laboratorio de programación",
+            "due_date": "2025-01-15"
+          }
+        ]
+      },
+      "emergency_information": {
+        "name": "Rosa Elena Pérez Morales",
+        "phone": "5558765432",
+        "relationship": "madre",
+        "secondary_phone": "5551239876",
+        "address": "Av. Universidad 456, Col. Educación, Guadalajara, Jalisco",
+        "is_primary": true
+      },
+      "vehicles": [
+        {
+          "plate_number": "ABC-1234",
+          "model": "Tsuru",
+          "vehicle_type": "sedan",
+          "color": "blanco",
+          "year": 2018,
+          "make": "Nissan",
+          "is_active": true,
+          "insurance_info": {
+            "policy_number": "POL-2024-789456",
+            "provider": "Seguros Monterrey"
+          }
+        }
+      ],
+      "access_control": {
+        "access_level": "estudiante",
+        "access_hours": "06:00-22:00",
+        "valid_from": "2024-08-15",
+        "valid_until": "2028-12-31",
+        "is_active": true,
+        "areas_allowed": "Edificio Académico A, Laboratorios de Cómputo, Biblioteca Central, Cafetería",
+        "biometric_type": "huella dactilar",
+        "data": "hash_huella_123456789",
+        "device_type": "lector RFID",
+        "device_id": "RFID_CAMPUS_001"
+      },
+      "user_university": {
+        "user_identifier": "ALU20240123",
+        "university_identifier": "2b0020f3-9d2f-4a14-b5b2-dcbad34754b5",
+        "user_roles": "student",
+        "mandatory_notification": "student",
+        "optional_notifications": [
+          {
+            "name": "invitación a talleres"
+          },
+          {
+            "name": "eventos deportivos"
+          },
+          {
+            "name": "oportunidades de becas"
+          }
+        ],
+        "enrollment_date": "2024-08-15",
+        "campus": "Campus Norte",
+        "career_code": "ING-SIS-2022",
+        "type": "degree",
+        "is_active": true,
+        "last_access": "2025-06-24T10:30:00Z"
+      }
+    },
+    {
+      "personal_information": {
+        "first_name": "Carlos Eduardo",
+        "last_name": "Martínez",
+        "second_last_name": "Sánchez",
+        "birth_date": "1997-09-28",
+        "gender": "male",
+        "photo": "https://universidad.edu.mx/fotos/CEMS970928.jpg",
+        "digital_signature": "https://universidad.edu.mx/firmas/CEMS970928.png",
+        "role": "student"
+      },
+      "contact_information": {
+        "phone": "5557891234",
+        "cell_phone": "5554567890",
+        "personal_email": "carlos.martinez.s@outlook.com",
+        "institutional_email": "c.martinezs@egresados.universidad.edu.mx",
+        "preferred_contact_method": "email"
+      },
+      "identification": {
+        "curp": "MASC970928HDFRNR09",
+        "identity_number": "IDMX45678901",
+        "nationality": "MX"
+      },
+      "student_profile": {
+        "student_id": "20170089",
+        "career_code": "MED-2015",
+        "admission_type": "regular",
+        "admission_period_term_code": "2017-1",
+        "study_modality": "schooling",
+        "shift": "morning",
+        "campus": "Campus Ciencias de la Salud",
+        "study_plan_name": "Medicina General",
+        "study_plan_version": "2015",
+        "enrollment_date": "2017-08-20",
+        "expected_graduation_date": "2023-06-30",
+        "education_level": "undergraduate",
+        "credits_approved": 480,
+        "periods_completed": 12,
+        "academic_status": "graduated"
+      },
+      "academic_profile": {
+        "previous_school": "Centro de Bachillerato Tecnológico",
+        "study_interest": "Medicina familiar y comunitaria",
+        "academic_offer": "Licenciatura"
+      },
+      "admission_data": {
+        "found_out_through": "recomendación familiar",
+        "educational_advisor": "Dr. Miguel Hernández",
+        "comments": "Vocación de servicio, interés en medicina rural"
+      },
+      "enrollments": [
+        {
+          "subject_code": "ANAT101",
+          "period_term_code": "2017-1",
+          "enrollment_date": "2017-08-20",
+          "final_grade": 8.9,
+          "status": "approved",
+          "attempt_number": 1,
+          "group": "MED-A",
+          "professor_id": "PROF_MED001"
+        },
+        {
+          "subject_code": "FISIO201",
+          "period_term_code": "2018-1",
+          "enrollment_date": "2018-08-15",
+          "final_grade": 9.3,
+          "status": "approved",
+          "attempt_number": 1,
+          "group": "MED-B",
+          "professor_id": "PROF_MED002"
+        }
+      ],
+      "academic_records": [
+        {
+          "period_term_code": "2022-2",
+          "status": "active",
+          "start_date": "2023-01-15",
+          "end_date": "2023-06-30",
+          "is_regular": true,
+          "average": 9.1
+        }
+      ],
+      "financial_information": {
+        "total_debt": 0.00,
+        "overdue_balance": 0.00,
+        "last_payment_date": "2023-05-15",
+        "last_payment_amount": 4500.00,
+        "payment_plan": "completo",
+        "scholarship": "mérito académico",
+        "discount": 15.00,
+        "payments": [
+          {
+            "payment_type": "degree",
+            "amount": 4500.00,
+            "payment_date": "2023-05-15",
+            "status": "completed",
+            "period_term_code": "2023-1",
+            "receipt_number": "FAC-2023-01234",
+            "payment_method": "transferencia bancaria",
+            "description": "Derechos de titulación",
+            "due_date": "2023-06-01"
+          }
+        ]
+      },
+      "graduation": {
+        "graduation_date": "2023-07-15",
+        "modality": "thesis",
+        "title": "Médico Cirujano",
+        "thesis_title": "Factores de riesgo cardiovascular en población joven mexicana",
+        "advisor_professor_id": "PROF_MED005",
+        "final_grade": 9.4,
+        "honors": "mención honorífica",
+        "ceremony_date": "2023-09-20",
+        "diploma_number": "DIP-MED-2023-00089",
+        "graduation_period_term_code": "2023-1"
+      },
+      "emergency_information": {
+        "name": "Elena Sánchez Morales",
+        "phone": "5556781234",
+        "relationship": "madre",
+        "secondary_phone": "5559874321",
+        "address": "Calle Revolución 789, Col. Centro, Puebla, Puebla",
+        "is_primary": true
+      },
+      "vehicles": [
+        {
+          "plate_number": "DEF-5678",
+          "model": "Aveo",
+          "vehicle_type": "hatchback",
+          "color": "azul",
+          "year": 2020,
+          "make": "Chevrolet",
+          "is_active": true,
+          "insurance_info": {
+            "policy_number": "POL-2023-456789",
+            "provider": "AXA Seguros"
+          }
+        }
+      ],
+      "access_control": {
+        "access_level": "egresado",
+        "access_hours": "08:00-18:00",
+        "valid_from": "2023-07-15",
+        "valid_until": "2025-07-15",
+        "is_active": true,
+        "areas_allowed": "Biblioteca Central, Área de Egresados",
+        "biometric_type": "código QR",
+        "data": "qr_code_egresado_089",
+        "device_type": "lector QR",
+        "device_id": "QR_EGRESADOS_001"
+      },
+      "user_university": {
+        "user_identifier": "EGR20170089",
+        "university_identifier": "2b0020f3-9d2f-4a14-b5b2-dcbad34754b5",
+        "user_roles": "student",
+        "mandatory_notification": "student",
+        "optional_notifications": [
+          {
+            "name": "eventos de egresados"
+          },
+          {
+            "name": "oportunidades laborales"
+          }
+        ],
+        "enrollment_date": "2017-08-20",
+        "campus": "Campus Ciencias de la Salud",
+        "career_code": "MED-2015",
+        "type": "degree",
+        "is_active": false,
+        "last_access": "2025-06-20T14:22:00Z"
+      }
+    }
+  ],
+  "professors": [
+    {
+      "personal_information": {
+        "first_name": "Roberto",
+        "last_name": "Fernández",
+        "second_last_name": "García",
+        "birth_date": "1975-04-10",
+        "gender": "male",
+        "photo": "https://universidad.edu.mx/fotos/RFG750410.jpg",
+        "digital_signature": "https://universidad.edu.mx/firmas/RFG750410.png",
+        "role": "professor"
+      },
+      "contact_information": {
+        "phone": "5552345678",
+        "cell_phone": "5558901234",
+        "personal_email": "roberto.fernandez@gmail.com",
+        "institutional_email": "r.fernandezg@universidad.edu.mx",
+        "preferred_contact_method": "email"
+      },
+      "identification": {
+        "curp": "FEGR750410HDFRRB02",
+        "identity_number": "IDMX11223344",
+        "nationality": "MX"
+      },
+      "professor_profile": {
+        "professor_id": "PROF001",
+        "department": "Departamento de Matemáticas",
+        "work_hours": "tiempo completo",
+        "hire_date": "2005-03-15",
+        "academic_degree": "Doctorado en Matemáticas Aplicadas",
+        "specialization": "Análisis numérico y ecuaciones diferenciales",
+        "is_active": true,
+        "max_hours_per_week": 40,
+        "subjects_taught": [
+          {
+            "subject_code": "MAT101",
+            "period_term_code": "2024-1",
+            "group": "A1",
+            "classroom": "AULA-MAT-101",
+            "schedule": "Lunes, Miércoles, Viernes 08:00-10:00"
+          },
+          {
+            "subject_code": "MAT201",
+            "period_term_code": "2024-2",
+            "group": "B1",
+            "classroom": "AULA-MAT-102",
+            "schedule": "Martes, Jueves 10:00-12:00"
+          }
+        ]
+      },
+      "emergency_information": {
+        "name": "Carmen García López",
+        "phone": "5557654321",
+        "relationship": "esposa",
+        "secondary_phone": "5553456789",
+        "address": "Av. Educadores 321, Col. Magisterial, CDMX",
+        "is_primary": true
+      },
+      "access_control": {
+        "access_level": "profesor",
+        "access_hours": "06:00-23:00",
+        "valid_from": "2005-03-15",
+        "valid_until": "2030-03-15",
+        "is_active": true,
+        "areas_allowed": "Todas las áreas académicas, Oficinas administrativas, Laboratorios",
+        "biometric_type": "huella dactilar",
+        "data": "hash_huella_profesor_001",
+        "device_type": "lector biométrico",
+        "device_id": "BIO_PROF_001"
+      },
+      "user_university": {
+        "user_identifier": "PROF001",
+        "university_identifier": "2b0020f3-9d2f-4a14-b5b2-dcbad34754b5",
+        "user_roles": "professor",
+        "mandatory_notification": "professor",
+        "optional_notifications": [
+          {
+            "name": "reuniones académicas"
+          },
+          {
+            "name": "capacitación docente"
+          }
+        ],
+        "enrollment_date": "2005-03-15",
+        "campus": "Campus Principal",
+        "type": "professor",
+        "is_active": true,
+        "last_access": "2025-06-24T09:15:00Z"
+      }
+    }
+  ],
+  "staff": [
+    {
+      "personal_information": {
+        "first_name": "Lucía",
+        "last_name": "Morales",
+        "second_last_name": "Hernández",
+        "birth_date": "1985-12-03",
+        "gender": "female",
+        "photo": "https://universidad.edu.mx/fotos/LMH851203.jpg",
+        "digital_signature": "https://universidad.edu.mx/firmas/LMH851203.png",
+        "role": "services"
+      },
+      "contact_information": {
+        "phone": "5553456789",
+        "cell_phone": "5556789012",
+        "personal_email": "lucia.morales@yahoo.com",
+        "institutional_email": "l.moralesh@administracion.universidad.edu.mx",
+        "preferred_contact_method": "phone"
+      },
+      "identification": {
+        "curp": "MOHL851203MDFRRR05",
+        "identity_number": "IDMX55667788",
+        "nationality": "MX"
+      },
+      "staff_profile": {
+        "staff_id": "STAFF001",
+        "department": "Servicios Escolares",
+        "job_title": "Coordinadora de Servicios Estudiantiles",
+        "work_hours": "tiempo completo",
+        "hire_date": "2010-06-01",
+        "staff_type": "administrative",
+        "is_active": true,
+        "supervisor_staff_id": "STAFF_SUP001",
+        "office_location": "Edificio Administrativo, Piso 2, Oficina 205",
+        "extension": "2205",
+        "responsibilities": [
+          {
+            "description": "Atención a estudiantes y trámites escolares",
+            "start_date": "2010-06-01",
+            "is_current": true,
+            "area": "servicios escolares"
+          },
+          {
+            "description": "Coordinación de eventos estudiantiles",
+            "start_date": "2015-01-15",
+            "is_current": true,
+            "area": "vida estudiantil"
+          }
+        ]
+      },
+      "emergency_information": {
+        "name": "Fernando Hernández Castro",
+        "phone": "5551234567",
+        "relationship": "esposo",
+        "secondary_phone": "5559876543",
+        "address": "Calle Primavera 567, Col. Las Flores, Toluca, Estado de México",
+        "is_primary": true
+      },
+      "access_control": {
+        "access_level": "administrativo",
+        "access_hours": "07:00-19:00",
+        "valid_from": "2010-06-01",
+        "valid_until": "2027-06-01",
+        "is_active": true,
+        "areas_allowed": "Edificio Administrativo, Servicios Escolares, Archivo",
+        "biometric_type": "tarjeta de acceso",
+        "data": "card_admin_001",
+        "device_type": "lector de tarjetas",
+        "device_id": "CARD_ADMIN_001"
+      },
+      "user_university": {
+        "user_identifier": "STAFF001",
+        "university_identifier": "2b0020f3-9d2f-4a14-b5b2-dcbad34754b5",
+        "user_roles": "services",
+        "mandatory_notification": "services",
+        "optional_notifications": [
+          {
+            "name": "actualizaciones administrativas"
+          },
+          {
+            "name": "capacitación laboral"
+          }
+        ],
+        "enrollment_date": "2010-06-01",
+        "campus": "Campus Principal",
+        "type": "administrative",
+        "is_active": true,
+        "last_access": "2025-06-24T08:45:00Z"
+      }
+    }
+  ]
+}

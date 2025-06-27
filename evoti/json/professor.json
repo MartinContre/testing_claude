@@ -1,0 +1,90 @@
+{
+  "professors": [
+    {
+      "personal_information": {
+        "first_name": "Roberto",
+        "last_name": "Martínez",
+        "second_last_name": "Sánchez",
+        "birth_date": "1978-03-10",
+        "gender": "male",
+        "photo": "https://universidad.edu.mx/fotos/RMS780310.jpg",
+        "role": "professor"
+      },
+      "contact_information": {
+        "phone": "5552345678",
+        "cell_phone": "5558765432",
+        "personal_email": "roberto.martinez@personal.com",
+        "institutional_email": "r.martinezs@universidad.edu.mx"
+      },
+      "identification": {
+        "curp": "MASR780310HDFRBT02",
+        "identity_number": "PROF12345",
+        "nationality": "MX"
+      },
+      "professor_profile": {
+        "professor_id": "PROF-1001",
+        "department": "Derecho",
+        "work_hours": "Lunes a Viernes 8:00-14:00",
+        "hire_date": "2020-01-15",
+        "academic_degree": "Doctor en Derecho Constitucional",
+        "specialization": "Derechos Humanos y Amparo",
+        "max_hours_per_week": 30,
+        "courses_taught": [
+          {
+            "subject_code": "DER450",
+            "period_term_code": "2024-1",
+            "group": "A3",
+            "name": "Bases de Datos Avanzadas"
+          },
+          {
+            "name": "Bases de Datos Avanzadas II",
+            "subject_code": "DER305",
+            "period_term_code": "2024-1",
+            "group": "B1"
+          }
+        ]
+      },
+      "user_university": {
+                "user_identifier": "PROF-1001",
+                "university_identifier": "2b0020f3-9d2f-4a14-b5b2-dcbad34754b5",
+                "university": {
+                    "name": "Universidad Tecnológica",
+                    "identifier": "UT-001"
+                },
+                "user_roles": "professor",
+                "mandatory_notification": "professor",
+                "enrollment_date": "2010-08-15",
+                "campus": "Campus Central",
+                "type": "degree"
+            },
+            "insurance_information": {
+                "policy_number": "SEG-123456",
+                "provider": "Seguros Atlas",
+                "start_date": "2023-01-01",
+                "end_date": "2024-12-31",
+                "coverage": "Responsabilidad Civil y Daños a Terceros",
+                "amount": 15000.00,
+                "is_active": true
+            },
+            "access_control": {
+                "access_level": "Profesor Titular",
+                "access_hours": "06:00-22:00",
+                "valid_from": "2020-01-01",
+                "valid_until": "2025-12-31",
+                "is_active": true,
+                "areas_allowed": "Edificio A, Laboratorios, Biblioteca",
+                "vehicles": [
+                    {
+                        "plate_number": "XYZ-7890",
+                        "model": "Civic",
+                        "vehicle_type": "Sedán",
+                        "color": "Gris",
+                        "year": 2021,
+                        "make": "Honda",
+                        "is_active": true
+                    }
+                ]
+            }
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+    "person": {
+      "personName": {
+        "givenName": "Manuel",
+        "lastName": "García",
+        "secondLastName": "Rodríguez"
+      },
+      "contactPoint": {
+        "telephone": "(425) 123 4567",
+        "emailAddress": "usermail@gmail.com"
+      },
+      "document": {
+        "documentNumber": "50456713W",
+        "issuerEntityCountry": "ES",
+        "documentType": "rut"
+      },
+      "nationality": {
+        "countryCode": "US"
+      },
+      "birthDate": "1998-06-05"
+    },
+    "userUniversities": [
+      {
+        "userId": "XXXXXXXXX",
+        "creationDate": "2018-09-25",
+        "userImage": {
+          "url": "https://university.domain/user_image.jpg"
+        },
+        "courses": [
+          {
+            "name": "string",
+            "type": "degree"
+          }
+        ],
+        "additionalUniversityUserData": [
+          {
+            "label": "Grupo",
+            "value": "A",
+            "valueType": "text"
+          },
+          {
+            "label": "facebook",
+            "value": "link_to_face",
+            "valueType": "link"
+          },
+          {
+            "label": "Universidad",
+            "value": "Morelia",
+            "valueType": "text"
+          }
+        ],
+        "role": {
+          "name": "Student"
+        },
+        "university": {     
+          "universityId": "9f361224-5890-459b-82f9-0a01f321e68a"
+        }
+      }
+    ],
+    "userNotificationsGroups": {
+      "mandatory": [
+        "student"
+      ],
+      "optional": [
+        "Estudiante de ingeniería",
+        "Estudiante de Campus Maya"
+      ]
+    }
+  }

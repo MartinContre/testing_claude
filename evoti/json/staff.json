@@ -1,0 +1,53 @@
+{
+  "staff": [
+    {
+      "personal_information": {
+        "first_name": "Ana Lucía",
+        "last_name": "Gómez",
+        "second_last_name": "Pérez",
+        "birth_date": "1985-07-22",
+        "gender": "female",
+        "photo": "https://universidad.edu.mx/fotos/ALGP850722.jpg",
+        "role": "services"
+      },
+      "contact_information": {
+        "phone": "5553456789",
+        "cell_phone": "5551239876",
+        "personal_email": "ana.gomez@personal.com",
+        "institutional_email": "a.gomezp@universidad.edu.mx",
+        "extension": "1234"
+      },
+      "identification": {
+        "curp": "GOPA850722MDFMRN05",
+        "identity_number": "STAFF54321",
+        "nationality": "MX"
+      },
+      "staff_profile": {
+        "staff_id": "ADM-2018-032",
+        "department": "Admisiones",
+        "job_title": "Coordinadora de Admisiones",
+        "work_hours": "Lunes a Viernes 9:00-18:00",
+        "hire_date": "2018-03-15",
+        "staff_type": "administrative",
+        "office_location": "Edificio A, Piso 2, Oficina 203",
+        "extension": "2034",
+        "responsibilities": [
+          {
+            "description": "Proceso de selección de nuevos alumnos",
+            "start_date": "2018-03-15"
+          },
+          {
+            "description": "Coordinación de exámenes de admisión",
+            "start_date": "2020-01-10"
+          }
+        ]
+      },
+      "user_university": {
+        "user_identifier": "STAFF2018032",
+        "university_identifier": "2b0020f3-9d2f-4a14-b5b2-dcbad34754b5",
+        "user_roles": "services",
+        "mandatory_notification": "services"
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+create user:
+POST /authentication/users/
+Content-Type: application/json
+Authorization: Token <tu-token>
+{
+    "user": {
+        "username": "username",
+        "email": "email@uvaq.edu.mx",
+        "password": "pass1234",
+        "first_name":"name",
+        "last_name":"last"
+    },
+    "is_authorized": true,
+    "can_manage_users": true
+}
+
+
+Update user
+PAATCH /authentication/users/<id>/
+Content-Type: application/json
+Authorization: Token <tu-token>
+
+{
+  "user": {
+    "password": "newpassword123"
+  }
+}
+
+{
+    "is_authorized": false,
+    "can_manage_users": false
+}
+
+
+Desactivar Usuario
+DELETE /authentication/users/<id>/
+Authorization: Token <tu-token>

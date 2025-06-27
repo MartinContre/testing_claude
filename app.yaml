@@ -1,0 +1,14 @@
+runtime: python312
+
+entrypoint: gunicorn -b :$PORT hub.wsgi
+
+env_variables:
+  DJANGO_SETTINGS_MODULE: "hub.settings"
+  PROJECT_ID: "campussantander"
+  APPENGINE_URL: "https://campussantander.uc.r.appspot.com"
+
+handlers:
+- url: /static
+  static_dir: static/
+- url: /.*
+  script: auto

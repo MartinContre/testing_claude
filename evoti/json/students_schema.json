@@ -1,0 +1,716 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Esquema de Estudiante",
+  "properties": {
+    "personal_information": {
+      "type": "object",
+      "required": ["first_name", "last_name", "second_last_name", "birth_date", "gender", "photo", "role"],
+      "properties": {
+        "first_name": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Nombre(s) del estudiante"
+        },
+        "last_name": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Apellido paterno"
+        },
+        "second_last_name": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Apellido materno"
+        },
+        "birth_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Fecha de nacimiento en formato YYYY-MM-DD"
+        },
+        "gender": {
+          "type": "string",
+          "enum": ["male", "female", "other"],
+          "description": "Género del estudiante"
+        },
+        "photo": {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 254,
+          "description": "URL de la fotografía del estudiante"
+        },
+        "digital_signature": {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 254,
+          "description": "URL de la firma digital (opcional)"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["student"],
+          "description": "Rol del usuario, debe ser 'student' para estudiantes"
+        }
+      }
+    },
+    "contact_information": {
+      "type": "object",
+      "required": ["personal_email", "institutional_email"],
+      "properties": {
+        "phone": {
+          "type": "string",
+          "maxLength": 20,
+          "description": "Teléfono fijo (opcional)"
+        },
+        "cell_phone": {
+          "type": "string",
+          "maxLength": 20,
+          "description": "Teléfono celular (opcional)"
+        },
+        "personal_email": {
+          "type": "string",
+          "format": "email",
+          "description": "Correo electrónico personal"
+        },
+        "institutional_email": {
+          "type": "string",
+          "format": "email",
+          "description": "Correo electrónico institucional (único)"
+        },
+        "preferred_contact_method": {
+          "type": "string",
+          "enum": ["whatsapp", "phone", "cellphone", "email", "other"],
+          "description": "Método de contacto preferido (opcional)"
+        }
+      }
+    },
+    "identification": {
+      "type": "object",
+      "required": ["curp", "identity_number", "nationality"],
+      "properties": {
+        "curp": {
+          "type": "string",
+          "maxLength": 18,
+          "description": "CURP del estudiante (único, 18 caracteres)"
+        },
+        "identity_number": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Número de identificación oficial"
+        },
+        "nationality": {
+          "type": "string",
+          "maxLength": 2,
+          "description": "Código de país ISO Alpha-2 (ej: MX, US, CA)"
+        }
+      }
+    },
+    "student_profile": {
+      "type": "object",
+      "required": ["student_id", "career_code", "admission_type", "admission_period_term_code", "study_modality", "campus", "study_plan_name", "study_plan_version", "enrollment_date", "education_level"],
+      "properties": {
+        "student_id": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Matrícula del estudiante (único)"
+        },
+        "career_code": {
+          "type": "string",
+          "maxLength": 20,
+          "description": "Código de la carrera"
+        },
+        "admission_type": {
+          "type": "string",
+          "enum": ["regular", "transfer", "special", "international"],
+          "description": "Tipo de admisión"
+        },
+        "admission_period_term_code": {
+          "type": "string",
+          "maxLength": 20,
+          "description": "Código del período de admisión"
+        },
+        "study_modality": {
+          "type": "string",
+          "enum": ["schooling", "mixed", "online", "intensive"],
+          "description": "Modalidad de estudio"
+        },
+        "shift": {
+          "type": "string",
+          "enum": ["morning", "afternoon", "evening", "night"],
+          "description": "Turno de clases (opcional)"
+        },
+        "campus": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Campus donde estudia"
+        },
+        "current_period_term_code": {
+          "type": "string",
+          "maxLength": 20,
+          "description": "Código del período actual (opcional)"
+        },
+        "study_plan_name": {
+          "type": "string",
+          "maxLength": 200,
+          "description": "Nombre del plan de estudios"
+        },
+        "study_plan_version": {
+          "type": "string",
+          "maxLength": 20,
+          "description": "Versión del plan de estudios"
+        },
+        "enrollment_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Fecha de inscripción en formato YYYY-MM-DD"
+        },
+        "expected_graduation_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Fecha esperada de graduación (opcional)  formato YYYY-MM-DD"
+        },
+        "education_level": {
+          "type": "string",
+          "enum": ["undergraduate", "graduate", "postgraduate"],
+          "description": "Nivel educativo"
+        },
+        "credits_approved": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Créditos aprobados (opcional, por defecto 0)"
+        },
+        "periods_completed": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Períodos completados (opcional, por defecto 0)"
+        },
+        "academic_status": {
+          "type": "string",
+          "enum": ["active", "inactive", "graduated", "suspended", "dropped_out"],
+          "description": "Estado académico (opcional, por defecto 'active')"
+        }
+      }
+    },
+    "academic_profile": {
+      "type": "object",
+      "properties": {
+        "previous_school": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Escuela anterior (opcional)"
+        },
+        "study_interest": {
+          "type": "string",
+          "maxLength": 200,
+          "description": "Interés de estudio (opcional)"
+        },
+        "academic_offer": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Oferta académica (opcional)"
+        }
+      }
+    },
+    "admission_data": {
+      "type": "object",
+      "properties": {
+        "found_out_through": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Cómo se enteró de la universidad (opcional)"
+        },
+        "educational_advisor": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Asesor educativo (opcional)"
+        },
+        "comments": {
+          "type": "string",
+          "description": "Comentarios adicionales (opcional)"
+        }
+      }
+    },
+    "enrollments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["subject_code", "period_term_code", "enrollment_date", "group"],
+        "properties": {
+          "subject_code": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "Código de la materia"
+          },
+          "period_term_code": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "Código del período académico"
+          },
+          "enrollment_date": {
+            "type": "string",
+            "format": "date",
+            "description": "Fecha de inscripción a la materia  formato YYYY-MM-DD"
+          },
+          "final_grade": {
+            "type": "number",
+            "multipleOf": 0.01,
+            "description": "Calificación final (opcional)"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["approved", "failed", "in_progress", "withdrawn"],
+            "description": "Estado de la materia (opcional, por defecto 'in_progress')"
+          },
+          "attempt_number": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "Número de intento (opcional, por defecto 1)"
+          },
+          "group": {
+            "type": "string",
+            "maxLength": 10,
+            "description": "Grupo de la materia"
+          },
+          "professor_id": {
+            "type": "string",
+            "maxLength": 50,
+            "description": "ID del profesor (opcional)"
+          }
+        }
+      }
+    },
+    "academic_records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["period_term_code", "status", "start_date"],
+        "properties": {
+          "period_term_code": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "Código del período académico"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["active", "inactive", "graduated", "suspended", "dropped_out"],
+            "description": "Estado académico en el período"
+          },
+          "start_date": {
+            "type": "string",
+            "format": "date",
+            "description": "Fecha de inicio del período  formato YYYY-MM-DD"
+          },
+          "end_date": {
+            "type": "string",
+            "format": "date",
+            "description": "Fecha de fin del período (opcional)  formato YYYY-MM-DD"
+          },
+          "reason": {
+            "type": "string",
+            "description": "Razón del estado (opcional)"
+          },
+          "comments": {
+            "type": "string",
+            "description": "Comentarios (opcional)"
+          },
+          "is_regular": {
+            "type": "boolean",
+            "description": "Es estudiante regular (opcional, por defecto true)"
+          },
+          "scholarship": {
+            "type": "string",
+            "maxLength": 100,
+            "description": "Beca otorgada (opcional)"
+          },
+          "average": {
+            "type": "number",
+            "multipleOf": 0.01,
+            "description": "Promedio del período (opcional)"
+          },
+          "withdrawal_date": {
+            "type": "string",
+            "format": "date",
+            "description": "Fecha de baja (opcional)  formato YYYY-MM-DD"
+          },
+          "withdrawal_reason": {
+            "type": "string",
+            "maxLength": 200,
+            "description": "Razón de baja (opcional)"
+          },
+          "re_enrollment_date": {
+            "type": "string",
+            "format": "date",
+            "description": "Fecha de reingreso (opcional)  formato YYYY-MM-DD"
+          }
+        }
+      }
+    },
+    "financial_information": {
+      "type": "object",
+      "properties": {
+        "total_debt": {
+          "type": "number",
+          "multipleOf": 0.01,
+          "description": "Deuda total (opcional, por defecto 0.00)"
+        },
+        "overdue_balance": {
+          "type": "number",
+          "multipleOf": 0.01,
+          "description": "Saldo vencido (opcional, por defecto 0.00)"
+        },
+        "last_payment_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Fecha del último pago (opcional) formato YYYY-MM-DD"
+        },
+        "last_payment_amount": {
+          "type": "number",
+          "multipleOf": 0.01,
+          "description": "Monto del último pago (opcional)"
+        },
+        "payment_plan": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Plan de pagos (opcional)"
+        },
+        "scholarship": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Beca (opcional)"
+        },
+        "discount": {
+          "type": "number",
+          "multipleOf": 0.01,
+          "description": "Descuento en porcentaje (opcional, por defecto 0.00)"
+        },
+        "payments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["payment_type", "amount", "payment_date", "period_term_code", "receipt_number", "payment_method", "due_date"],
+            "properties": {
+              "payment_type": {
+                "type": "string",
+                "enum": ["enrollment", "monthly", "degree", "library", "lab", "other"],
+                "description": "Tipo de pago"
+              },
+              "amount": {
+                "type": "number",
+                "multipleOf": 0.01,
+                "description": "Monto del pago"
+              },
+              "payment_date": {
+                "type": "string",
+                "format": "date",
+                "description": "Fecha del pago  formato YYYY-MM-DD"
+              },
+              "status": {
+                "type": "string",
+                "enum": ["pending", "completed", "partial", "cancelled"],
+                "description": "Estado del pago (opcional, por defecto 'pending')"
+              },
+              "period_term_code": {
+                "type": "string",
+                "maxLength": 20,
+                "description": "Código del período académico"
+              },
+              "receipt_number": {
+                "type": "string",
+                "maxLength": 50,
+                "description": "Número de recibo (único)"
+              },
+              "payment_method": {
+                "type": "string",
+                "maxLength": 50,
+                "description": "Método de pago"
+              },
+              "description": {
+                "type": "string",
+                "description": "Descripción del pago (opcional)"
+              },
+              "due_date": {
+                "type": "string",
+                "format": "date",
+                "description": "Fecha de vencimiento  formato YYYY-MM-DD"
+              }
+            }
+          }
+        }
+      }
+    },
+    "graduation": {
+      "type": "object",
+      "required": ["graduation_date", "modality", "title", "final_grade", "diploma_number", "graduation_period_term_code"],
+      "properties": {
+        "graduation_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Fecha de graduación  formato YYYY-MM-DD"
+        },
+        "modality": {
+          "type": "string",
+          "enum": ["thesis", "exam", "work_exp", "special_study"],
+          "description": "Modalidad de graduación"
+        },
+        "title": {
+          "type": "string",
+          "maxLength": 200,
+          "description": "Título obtenido"
+        },
+        "thesis_title": {
+          "type": "string",
+          "maxLength": 200,
+          "description": "Título de la tesis (opcional)"
+        },
+        "advisor_professor_id": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "ID del profesor asesor (opcional)"
+        },
+        "final_grade": {
+          "type": "number",
+          "multipleOf": 0.01,
+          "description": "Calificación final"
+        },
+        "honors": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Menciones honoríficas (opcional)"
+        },
+        "ceremony_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Fecha de ceremonia (opcional)  formato YYYY-MM-DD"
+        },
+        "diploma_number": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Número de diploma (único)"
+        },
+        "graduation_period_term_code": {
+          "type": "string",
+          "maxLength": 20,
+          "description": "Código del período de graduación"
+        }
+      }
+    },
+    "emergency_information": {
+      "type": "object",
+      "required": ["name", "phone", "relationship"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Nombre del contacto de emergencia"
+        },
+        "phone": {
+          "type": "string",
+          "maxLength": 20,
+          "description": "Teléfono del contacto de emergencia"
+        },
+        "relationship": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Relación con el estudiante"
+        },
+        "secondary_phone": {
+          "type": "string",
+          "maxLength": 20,
+          "description": "Teléfono secundario (opcional)"
+        },
+        "address": {
+          "type": "string",
+          "description": "Dirección del contacto (opcional)"
+        },
+        "is_primary": {
+          "type": "boolean",
+          "description": "Es contacto principal (opcional, por defecto true)"
+        }
+      }
+    },
+    "vehicles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["plate_number", "model", "vehicle_type", "color", "year", "make"],
+        "properties": {
+          "plate_number": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "Número de placa (único)"
+          },
+          "model": {
+            "type": "string",
+            "maxLength": 50,
+            "description": "Modelo del vehículo"
+          },
+          "vehicle_type": {
+            "type": "string",
+            "maxLength": 50,
+            "description": "Tipo de vehículo"
+          },
+          "color": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "Color del vehículo"
+          },
+          "year": {
+            "type": "integer",
+            "description": "Año del vehículo"
+          },
+          "make": {
+            "type": "string",
+            "maxLength": 50,
+            "description": "Marca del vehículo"
+          },
+          "is_active": {
+            "type": "boolean",
+            "description": "Vehículo activo (opcional, por defecto true)"
+          },
+          "insurance_info": {
+            "type": "object",
+            "required": ["policy_number", "provider"],
+            "properties": {
+              "policy_number": {
+                "type": "string",
+                "maxLength": 50,
+                "description": "Número de póliza (único)"
+              },
+              "provider": {
+                "type": "string",
+                "maxLength": 100,
+                "description": "Proveedor del seguro"
+              }
+            }
+          }
+        }
+      }
+    },
+    "access_control": {
+      "type": "object",
+      "required": ["valid_from", "valid_until", "areas_allowed", "biometric_type", "data", "device_type", "device_id"],
+      "properties": {
+        "access_level": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Nivel de acceso (opcional)"
+        },
+        "access_hours": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Horario de acceso (opcional)"
+        },
+        "valid_from": {
+          "type": "string",
+          "format": "date",
+          "description": "Fecha de inicio de validez  formato YYYY-MM-DD"
+        },
+        "valid_until": {
+          "type": "string",
+          "format": "date",
+          "description": "Fecha de fin de validez  formato YYYY-MM-DD"
+        },
+        "is_active": {
+          "type": "boolean",
+          "description": "Control de acceso activo (opcional, por defecto true)"
+        },
+        "areas_allowed": {
+          "type": "string",
+          "description": "Áreas permitidas"
+        },
+        "biometric_type": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Tipo de biométrico"
+        },
+        "data": {
+          "type": "string",
+          "description": "Datos biométricos codificados"
+        },
+        "device_type": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Tipo de dispositivo"
+        },
+        "device_id": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "ID del dispositivo"
+        }
+      }
+    },
+    "user_university": {
+      "type": "object",
+      "required": ["user_identifier", "university_identifier", "user_roles", "mandatory_notification", "enrollment_date"],
+      "properties": {
+        "user_identifier": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Identificador del usuario"
+        },
+        "university_identifier": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Identificador de la universidad (por defecto: 2b0020f3-9d2f-4a14-b5b2-dcbad34754b5)"
+        },
+        "user_roles": {
+          "type": "string",
+          "enum": ["student"],
+          "description": "Rol del usuario"
+        },
+        "mandatory_notification": {
+          "type": "string",
+          "enum": ["student"],
+          "description": "Notificación obligatoria (debe coincidir con user_roles)"
+        },
+        "optional_notifications": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "maxLength": 100,
+                "description": "Nombre de la notificación opcional"
+              }
+            }
+          }
+        },
+        "enrollment_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Fecha de inscripción en la universidad"
+        },
+        "campus": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Campus (opcional)"
+        },
+        "career_code": {
+          "type": "string",
+          "maxLength": 20,
+          "description": "Código de carrera (opcional)"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["secondary", "high_school", "degree", "engineer", "specialty", "master", "doctorate"],
+          "description": "Tipo de estudios (opcional)"
+        },
+        "is_active": {
+          "type": "boolean",
+          "description": "Usuario activo (opcional, por defecto true)"
+        },
+        "last_access": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Último acceso (opcional)"
+        }
+      }
+    }
+  },
+  "required": [
+    "personal_information",
+    "contact_information",
+    "identification",
+    "professor_profile",
+    "user_university"
+  ]
+}

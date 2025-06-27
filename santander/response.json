@@ -1,0 +1,45 @@
+{
+    "person": {
+        "personName": {
+            "givenName": "Carlos",
+            "lastName": "González",
+            "secondLastName": "Pérez"
+        },
+        "contactPoint": {
+            "telephone": "(556) 211 2635",
+            "emailAddress": "mail@uvaq.edu.mx"
+        },
+        "document": {
+            "documentNumber": "GOC900515HDFGR14",
+            "issuerEntityCountry": "MX"
+        },
+        "nationality": {
+            "countryCode": "MX"
+        },
+        "birthDate": "1992-02-24"
+    },
+    "userUniversities": [
+        {
+            "userId": "1",
+            "creationDate": "2024-08-15",
+            "userImage": {
+                "url": "https://example.com/photo80.jpg"
+            },
+            "university": {
+                "universityId": ""
+            },
+            "role": {
+                "name": "Estudiante"
+            }
+        }
+    ],
+    "userNotificationsGroups": {
+        "mandatory": [
+            ["student", "professor", "services", "tester"]
+        ],
+        "optional": [
+            "Estudiante de Medicina",
+            "Estudiante de Campus Maya"
+        ]
+    }
+}
