@@ -1,11 +1,12 @@
 import datetime
 from decimal import Decimal
-from typing import TYPE_CHECKING, ClassVar
+from typing import ClassVar
 
 import pycountry
 from django.core.exceptions import ValidationError
 from django.db import models
 from django.db.models import Avg, Count
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 # Validators
@@ -103,6 +104,10 @@ class EducationLevel(models.TextChoices):
 class SubjectTypes(models.TextChoices):
     CORE = "core", "Core"
     ELECTIVE = "elective", "Elective"
+    OPTIONAL = "optional", "Optional"
+    LAB = "lab", "Laboratory"
+    SEMINAR = "seminar", "Seminar"
+    THESIS = "thesis", "Thesis"
 
 
 class PeriodType(models.TextChoices):
@@ -110,6 +115,10 @@ class PeriodType(models.TextChoices):
     SUMMER = "summer", "Summer"
     QUARTER = "quarter", "Quarter"
     INTENSIVE = "intensive", "Intensive"
+    TRIMESTER = "trimester", "Trimester"
+    WINTER = "winter", "Winter"
+    ONLINE = "online", "Online"
+    CONTINUOUS = "continuous", "Continuous Enrollment"
 
 
 class PersonalInformation(models.Model):
@@ -158,8 +167,8 @@ class ContactInformation(models.Model):
         on_delete=models.CASCADE,
         related_name="contact_info",
     )
-    phone = models.CharField(max_length=20, blank=True)
-    cell_phone = models.CharField(max_length=20, blank=True)
+    phone = PhoneNumberField(blank=True, region="MX")
+    cell_phone = PhoneNumberField(blank=True, region="MX")
     personal_email = models.EmailField()
     institutional_email = models.EmailField(unique=True, blank=True, null=True)
     preferred_contact_method = models.CharField(
@@ -234,9 +243,12 @@ class AcademicPeriod(models.Model):
     period_number = models.PositiveSmallIntegerField()
     period_type = models.CharField(max_length=20, choices=PeriodType.choices)
     is_regular_period = models.BooleanField(default=True)
-    # These are virtual (derived) or linked via FK
     next_period = models.OneToOneField(
-        "self", on_delete=models.SET_NULL, null=True, blank=True, related_name="previous_period"
+        "self",
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="previous_period",
     )
 
     def __str__(self):
@@ -550,6 +562,10 @@ class StaffProfile(models.Model):
         ("administrative", "Administrative"),
         ("support", "Support"),
         ("technical", "Technical"),
+        ("services", "Services"),
+        ("research", "Research"),
+        ("maintenance", "Maintenance"),
+        ("other", "Other"),
     ]
 
     user = models.OneToOneField(
@@ -681,7 +697,7 @@ class UniversityInfo(models.Model):
     identifier = models.CharField(max_length=50)
     additional_info = models.TextField(blank=True)
     address = models.TextField()
-    phone = models.CharField(max_length=20)
+    phone = PhoneNumberField(blank=True, region="MX")
     website = models.URLField()
     rector = models.CharField(max_length=100)
     foundation_date = models.DateField()
@@ -767,9 +783,9 @@ class EmergencyInformation(models.Model):
         related_name="emergency_info",
     )
     name = models.CharField(max_length=100)
-    phone = models.CharField(max_length=20)
+    phone = PhoneNumberField(blank=True, region="MX")
     relationship = models.CharField(max_length=50)
-    secondary_phone = models.CharField(max_length=20, blank=True)
+    secondary_phone = PhoneNumberField(blank=True, region="MX")
     address = models.TextField(blank=True)
     is_primary = models.BooleanField(default=True)
 

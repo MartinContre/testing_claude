@@ -1,403 +1,801 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Esquema para Personal de Servicios",
+  "description": "Esquema completo y detallado para el registro de personal de servicios en el sistema universitario",
   "type": "object",
-  "title": "Esquema de Personal de Servicios",
+  "required": [
+    "personal_information",
+    "contact_information", 
+    "identification",
+    "staff_profile",
+    "user_university"
+  ],
   "properties": {
     "personal_information": {
+      "title": "Información Personal",
+      "description": "Datos personales básicos del miembro del personal de servicios",
       "type": "object",
-      "required": ["first_name", "last_name", "second_last_name", "birth_date", "gender", "photo", "role"],
+      "required": [
+        "first_name",
+        "last_name", 
+        "second_last_name",
+        "birth_date",
+        "gender",
+        "photo",
+        "role"
+      ],
       "properties": {
         "first_name": {
+          "title": "Nombre",
+          "description": "Primer nombre de la persona",
           "type": "string",
           "maxLength": 100,
-          "description": "Nombre(s) del miembro del personal"
+          "minLength": 1,
+          "pattern": "^[a-zA-ZÀ-ÿ\\u00f1\\u00d1\\s]+$"
         },
         "last_name": {
+          "title": "Apellido Paterno",
+          "description": "Apellido paterno de la persona",
           "type": "string",
           "maxLength": 100,
-          "description": "Apellido paterno"
+          "minLength": 1,
+          "pattern": "^[a-zA-ZÀ-ÿ\\u00f1\\u00d1\\s]+$"
         },
         "second_last_name": {
+          "title": "Apellido Materno",
+          "description": "Apellido materno de la persona",
           "type": "string",
           "maxLength": 100,
-          "description": "Apellido materno"
+          "minLength": 1,
+          "pattern": "^[a-zA-ZÀ-ÿ\\u00f1\\u00d1\\s]+$"
         },
         "birth_date": {
+          "title": "Fecha de Nacimiento",
+          "description": "Fecha de nacimiento en formato YYYY-MM-DD",
           "type": "string",
           "format": "date",
-          "description": "Fecha de nacimiento en formato YYYY-MM-DD"
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
         },
         "gender": {
+          "title": "Género",
+          "description": "Género de la persona",
           "type": "string",
           "enum": ["male", "female", "other"],
-          "description": "Género del miembro del personal"
+          "enumNames": ["Masculino", "Femenino", "Otro"]
         },
         "photo": {
+          "title": "Fotografía",
+          "description": "URL de la fotografía oficial del personal",
           "type": "string",
           "format": "uri",
-          "maxLength": 254,
-          "description": "URL de la fotografía"
+          "maxLength": 254
         },
         "digital_signature": {
+          "title": "Firma Digital",
+          "description": "URL de la firma digital del personal (opcional)",
           "type": "string",
           "format": "uri",
-          "maxLength": 254,
-          "description": "URL de la firma digital (opcional)"
+          "maxLength": 254
         },
         "role": {
+          "title": "Rol en el Sistema",
+          "description": "Rol asignado en el sistema universitario",
           "type": "string",
           "enum": ["services"],
-          "description": "Rol del usuario, debe ser 'services' para personal de servicios"
+          "enumNames": ["Personal de Servicios"],
+          "const": "services"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "contact_information": {
+      "title": "Información de Contacto",
+      "description": "Datos de contacto del personal de servicios",
       "type": "object",
-      "required": ["personal_email", "institutional_email"],
+      "required": ["personal_email"],
       "properties": {
         "phone": {
+          "title": "Teléfono Fijo",
+          "description": "Número de teléfono fijo",
           "type": "string",
-          "maxLength": 20,
-          "description": "Teléfono fijo (opcional)"
+          "pattern": "^\\+?[1-9]\\d{1,14}$",
+          "maxLength": 16,
+          "examples": ["+525512345678", "+14155552671"]
         },
         "cell_phone": {
+          "title": "Teléfono Celular",
+          "description": "Número de teléfono celular",
           "type": "string",
-          "maxLength": 20,
-          "description": "Teléfono celular (opcional)"
+          "pattern": "^\\+?[1-9]\\d{1,14}$",
+          "maxLength": 16,
+          "examples": ["+525512345678", "+14155552671"]
         },
         "personal_email": {
+          "title": "Correo Electrónico Personal",
+          "description": "Dirección de correo electrónico personal (única en el sistema)",
           "type": "string",
           "format": "email",
-          "description": "Correo electrónico personal"
+          "maxLength": 254
         },
         "institutional_email": {
+          "title": "Correo Electrónico Institucional",
+          "description": "Dirección de correo electrónico institucional (única en el sistema)",
           "type": "string",
           "format": "email",
-          "description": "Correo electrónico institucional (único)"
+          "maxLength": 254
         },
         "preferred_contact_method": {
+          "title": "Método de Contacto Preferido",
+          "description": "Método preferido para establecer contacto",
           "type": "string",
           "enum": ["whatsapp", "phone", "cellphone", "email", "other"],
-          "description": "Método de contacto preferido (opcional)"
+          "enumNames": ["WhatsApp", "Teléfono", "Celular", "Correo Electrónico", "Otro"]
         }
-      }
+      },
+      "additionalProperties": false
     },
     "identification": {
+      "title": "Identificación",
+      "description": "Documentos de identificación del personal",
       "type": "object",
-      "required": ["curp", "identity_number", "nationality"],
+      "required": ["identity_number", "nationality"],
       "properties": {
         "curp": {
+          "title": "CURP",
+          "description": "Clave Única de Registro de Población (único en el sistema)",
           "type": "string",
           "maxLength": 18,
-          "description": "CURP (único, 18 caracteres)"
+          "minLength": 18,
+          "pattern": "^[A-Z]{4}[0-9]{6}[HM][A-Z]{5}[0-9A-Z][0-9]$"
         },
         "identity_number": {
+          "title": "Número de Identificación",
+          "description": "Número de documento de identidad (único en el sistema)",
           "type": "string",
           "maxLength": 50,
-          "description": "Número de identificación oficial"
+          "minLength": 1
         },
         "nationality": {
+          "title": "Nacionalidad",
+          "description": "Código de país ISO 3166-1 alpha-2 para la nacionalidad",
           "type": "string",
           "maxLength": 2,
-          "description": "Código de país ISO Alpha-2 (ej: MX, US, CA)"
+          "minLength": 2,
+          "pattern": "^[A-Z]{2}$"
         }
-      }
+      },
+      "additionalProperties": false
     },
     "staff_profile": {
+      "title": "Perfil del Personal de Servicios",
+      "description": "Información específica del perfil laboral del personal de servicios",
       "type": "object",
-      "required": ["staff_id", "department", "job_title", "work_hours", "hire_date", "staff_type", "office_location"],
+      "required": [
+        "department",
+        "job_title",
+        "work_hours",
+        "staff_id",
+        "hire_date",
+        "staff_type",
+        "office_location"
+      ],
       "properties": {
-        "staff_id": {
-          "type": "string",
-          "maxLength": 50,
-          "description": "ID único del personal"
-        },
         "department": {
+          "title": "Departamento",
+          "description": "Departamento al que pertenece el personal",
           "type": "string",
           "maxLength": 100,
-          "description": "Departamento al que pertenece"
+          "minLength": 1
         },
         "job_title": {
+          "title": "Puesto de Trabajo",
+          "description": "Título o puesto de trabajo del personal",
           "type": "string",
           "maxLength": 100,
-          "description": "Puesto de trabajo"
+          "minLength": 1
         },
         "work_hours": {
+          "title": "Horario de Trabajo",
+          "description": "Descripción del horario de trabajo",
           "type": "string",
           "maxLength": 100,
-          "description": "Horario de trabajo"
+          "minLength": 1
         },
-        "hire_date": {
-          "type": "string",
-          "format": "date",
-          "description": "Fecha de contratación  formato YYYY-MM-DD"
-        },
-        "staff_type": {
-          "type": "string",
-          "enum": ["academic", "administrative", "support", "technical"],
-          "description": "Tipo de personal"
-        },
-        "is_active": {
-          "type": "boolean",
-          "description": "Personal activo (opcional, por defecto true)"
-        },
-        "supervisor_id": {
+        "staff_id": {
+          "title": "ID del Personal",
+          "description": "Identificador único del personal (único en el sistema)",
           "type": "string",
           "maxLength": 50,
-          "description": "ID del supervisor (opcional)"
+          "minLength": 1
+        },
+        "hire_date": {
+          "title": "Fecha de Contratación",
+          "description": "Fecha de contratación en formato YYYY-MM-DD",
+          "type": "string",
+          "format": "date",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "staff_type": {
+          "title": "Tipo de Personal",
+          "description": "Clasificación del tipo de personal",
+          "type": "string",
+          "enum": ["academic", "administrative", "support", "technical", "services", "research", "maintenance", "other"],
+          "enumNames": ["Académico", "Administrativo", "Apoyo", "Técnico", "Servicios", "Investigación", "Mantenimiento", "Otro"]
+        },
+        "is_active": {
+          "title": "Estado Activo",
+          "description": "Indica si el personal está actualmente activo",
+          "type": "boolean",
+          "default": true
+        },
+        "supervisor": {
+          "title": "Supervisor",
+          "description": "ID del supervisor directo (referencia a otro staff_profile)",
+          "type": "string",
+          "maxLength": 50
         },
         "office_location": {
+          "title": "Ubicación de Oficina",
+          "description": "Ubicación física de la oficina del personal",
           "type": "string",
           "maxLength": 100,
-          "description": "Ubicación de la oficina"
+          "minLength": 1
         },
         "extension": {
+          "title": "Extensión Telefónica",
+          "description": "Número de extensión telefónica",
           "type": "string",
           "maxLength": 10,
-          "description": "Extensión telefónica (opcional)"
+          "pattern": "^[0-9]+$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "user_university": {
+      "title": "Usuario Universidad",
+      "description": "Información de vinculación del usuario con la universidad",
+      "type": "object",
+      "required": [
+        "user_identifier",
+        "university_identifier",
+        "university",
+        "user_roles",
+        "mandatory_notification",
+        "enrollment_date"
+      ],
+      "properties": {
+        "user_identifier": {
+          "title": "Identificador de Usuario",
+          "description": "Identificador único del usuario en el sistema",
+          "type": "string",
+          "maxLength": 50,
+          "minLength": 1
         },
-        "responsibilities": {
+        "university_identifier": {
+          "title": "Identificador de Universidad",
+          "description": "Identificador único de la universidad",
+          "type": "string",
+          "maxLength": 50,
+          "default": "2b0020f3-9d2f-4a14-b5b2-dcbad34754b5"
+        },
+        "university": {
+          "title": "Información de la Universidad",
+          "description": "Datos de la institución universitaria",
+          "type": "object",
+          "required": ["name", "identifier", "address", "phone", "website", "rector", "foundation_date"],
+          "properties": {
+            "name": {
+              "title": "Nombre de la Universidad",
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1
+            },
+            "identifier": {
+              "title": "Identificador",
+              "type": "string",
+              "maxLength": 50,
+              "minLength": 1
+            },
+            "additional_info": {
+              "title": "Información Adicional",
+              "type": "string"
+            },
+            "address": {
+              "title": "Dirección",
+              "type": "string",
+              "minLength": 1
+            },
+            "phone": {
+              "title": "Teléfono",
+              "type": "string",
+              "pattern": "^\\+?[1-9]\\d{1,14}$",
+              "maxLength": 16,
+              "examples": ["+525512345678", "+14155552671"]
+            },
+            "website": {
+              "title": "Sitio Web",
+              "type": "string",
+              "format": "uri"
+            },
+            "rector": {
+              "title": "Rector",
+              "type": "string",
+              "maxLength": 100,
+              "minLength": 1
+            },
+            "foundation_date": {
+              "title": "Fecha de Fundación",
+              "type": "string",
+              "format": "date"
+            }
+          }
+        },
+        "user_roles": {
+          "title": "Roles del Usuario",
+          "description": "Rol del usuario en el sistema",
+          "type": "string",
+          "enum": ["services"],
+          "enumNames": ["Personal de Servicios"],
+          "const": "services"
+        },
+        "mandatory_notification": {
+          "title": "Notificación Obligatoria",
+          "description": "Tipo de notificación obligatoria (debe coincidir con user_roles)",
+          "type": "string",
+          "enum": ["services"],
+          "enumNames": ["Personal de Servicios"],
+          "const": "services"
+        },
+        "optional_notifications": {
+          "title": "Notificaciones Opcionales",
+          "description": "Lista de notificaciones opcionales suscritas",
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["description", "start_date", "area"],
             "properties": {
+              "name": {
+                "title": "Nombre de la Notificación",
+                "type": "string",
+                "maxLength": 100
+              },
+              "notification_type": {
+                "title": "Tipo de Notificación",
+                "type": "string",
+                "enum": ["academic", "financial", "administrative", "event", "security"],
+                "enumNames": ["Académica", "Financiera", "Administrativa", "Evento", "Seguridad"]
+              },
               "description": {
-                "type": "string",
-                "maxLength": 255,
-                "description": "Descripción de la responsabilidad"
+                "title": "Descripción",
+                "type": "string"
               },
-              "start_date": {
-                "type": "string",
-                "format": "date",
-                "description": "Fecha de inicio de la responsabilidad  formato YYYY-MM-DD"
-              },
-              "end_date": {
-                "type": "string",
-                "format": "date",
-                "description": "Fecha de fin de la responsabilidad (opcional)  formato YYYY-MM-DD"
-              },
-              "is_current": {
+              "is_active": {
+                "title": "Activa",
                 "type": "boolean",
-                "description": "Indica si es la responsabilidad actual (opcional, por defecto true)"
+                "default": true
               },
-              "area": {
+              "target_roles": {
+                "title": "Roles Objetivo",
                 "type": "string",
-                "maxLength": 100,
-                "description": "Área de la responsabilidad"
+                "enum": ["student", "services", "professor", "tester"],
+                "enumNames": ["Estudiante", "Servicios", "Profesor", "Tester"]
               }
             }
+          }
+        },
+        "enrollment_date": {
+          "title": "Fecha de Inscripción",
+          "description": "Fecha de inscripción en formato YYYY-MM-DD",
+          "type": "string",
+          "format": "date",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "campus": {
+          "title": "Campus",
+          "description": "Campus de adscripción",
+          "type": "string",
+          "maxLength": 100
+        },
+        "career": {
+          "title": "Carrera Relacionada",
+          "description": "Carrera con la que puede estar relacionado el personal",
+          "type": "object",
+          "properties": {
+            "name": {
+              "title": "Nombre de la Carrera",
+              "type": "string",
+              "maxLength": 200
+            },
+            "code": {
+              "title": "Código de la Carrera",
+              "type": "string",
+              "maxLength": 20
+            },
+            "description": {
+              "title": "Descripción",
+              "type": "string"
+            },
+            "duration_semesters": {
+              "title": "Duración en Semestres",
+              "type": "integer",
+              "minimum": 1
+            },
+            "total_credits": {
+              "title": "Créditos Totales",
+              "type": "integer",
+              "minimum": 1
+            },
+            "is_active": {
+              "title": "Activa",
+              "type": "boolean",
+              "default": true
+            },
+            "faculty": {
+              "title": "Facultad",
+              "type": "string",
+              "maxLength": 100
+            },
+            "accreditation": {
+              "title": "Acreditación",
+              "type": "string",
+              "maxLength": 100
+            },
+            "accreditation_valid_until": {
+              "title": "Vigencia de Acreditación",
+              "type": "string",
+              "format": "date"
+            }
+          }
+        },
+        "type": {
+          "title": "Tipo de Vinculación",
+          "description": "Tipo de vinculación con la universidad",
+          "type": "string",
+          "enum": ["secondary", "high_school", "degree", "engineer", "specialty", "master", "doctorate", "other"],
+          "enumNames": ["Secundaria", "Preparatoria", "Licenciatura", "Ingeniería", "Especialidad", "Maestría", "Doctorado", "Otro"]
+        },
+        "is_active": {
+          "title": "Usuario Activo",
+          "description": "Indica si el usuario está activo en el sistema",
+          "type": "boolean",
+          "default": true
+        },
+        "last_access": {
+          "title": "Último Acceso",
+          "description": "Fecha y hora del último acceso al sistema",
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "additionalProperties": false
+    },
+    "responsibilities": {
+      "title": "Responsabilidades",
+      "description": "Lista de responsabilidades asignadas al personal",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["description", "start_date", "area"],
+        "properties": {
+          "description": {
+            "title": "Descripción de la Responsabilidad",
+            "type": "string",
+            "maxLength": 255,
+            "minLength": 1
+          },
+          "start_date": {
+            "title": "Fecha de Inicio",
+            "type": "string",
+            "format": "date"
+          },
+          "end_date": {
+            "title": "Fecha de Finalización",
+            "type": "string",
+            "format": "date"
+          },
+          "is_current": {
+            "title": "Es Responsabilidad Actual",
+            "type": "boolean",
+            "default": true
+          },
+          "area": {
+            "title": "Área de Responsabilidad",
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1
           }
         }
       }
     },
-    "emergency_information": {
-      "type": "object",
-      "required": ["name", "phone", "relationship"],
-      "properties": {
-        "name": {
-          "type": "string",
-          "maxLength": 100,
-          "description": "Nombre del contacto de emergencia"
-        },
-        "phone": {
-          "type": "string",
-          "maxLength": 20,
-          "description": "Teléfono del contacto de emergencia"
-        },
-        "relationship": {
-          "type": "string",
-          "maxLength": 50,
-          "description": "Relación con el miembro del personal"
-        },
-        "secondary_phone": {
-          "type": "string",
-          "maxLength": 20,
-          "description": "Teléfono secundario (opcional)"
-        },
-        "address": {
-          "type": "string",
-          "description": "Dirección del contacto de emergencia (opcional)"
-        },
-        "is_primary": {
-          "type": "boolean",
-          "description": "Indica si es el contacto principal (opcional, por defecto true)"
-        }
-      }
-    },
     "vehicles": {
+      "title": "Vehículos",
+      "description": "Lista de vehículos registrados a nombre del personal",
       "type": "array",
       "items": {
         "type": "object",
         "required": ["plate_number", "model", "vehicle_type", "color", "year", "make"],
         "properties": {
           "plate_number": {
+            "title": "Número de Placa",
             "type": "string",
             "maxLength": 20,
-            "description": "Número de placa del vehículo (único)"
+            "minLength": 1
           },
           "model": {
+            "title": "Modelo",
             "type": "string",
             "maxLength": 50,
-            "description": "Modelo del vehículo"
+            "minLength": 1
           },
           "vehicle_type": {
+            "title": "Tipo de Vehículo",
             "type": "string",
             "maxLength": 50,
-            "description": "Tipo de vehículo (sedán, SUV, etc.)"
+            "minLength": 1
           },
           "color": {
+            "title": "Color",
             "type": "string",
             "maxLength": 20,
-            "description": "Color del vehículo"
+            "minLength": 1
           },
           "year": {
+            "title": "Año",
             "type": "integer",
-            "description": "Año del vehículo"
+            "minimum": 1900,
+            "maximum": 2030
           },
           "make": {
+            "title": "Marca",
             "type": "string",
             "maxLength": 50,
-            "description": "Marca del vehículo"
+            "minLength": 1
           },
           "is_active": {
+            "title": "Vehículo Activo",
             "type": "boolean",
-            "description": "Indica si el vehículo está activo (opcional, por defecto true)"
+            "default": true
           },
           "insurance_info": {
-            "type": "object",
-            "required": ["policy_number", "provider"],
-            "properties": {
-              "policy_number": {
-                "type": "string",
-                "maxLength": 50,
-                "description": "Número de póliza de seguro (único)"
-              },
-              "provider": {
-                "type": "string",
-                "maxLength": 100,
-                "description": "Compañía aseguradora"
+            "title": "Información del Seguro",
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["policy_number", "provider"],
+              "properties": {
+                "policy_number": {
+                  "title": "Número de Póliza",
+                  "type": "string",
+                  "maxLength": 50,
+                  "minLength": 1
+                },
+                "provider": {
+                  "title": "Proveedor del Seguro",
+                  "type": "string",
+                  "maxLength": 100,
+                  "minLength": 1
+                }
               }
             }
           }
         }
       }
     },
-    "access_control": {
+    "insurance_information": {
+      "title": "Información del Seguro",
       "type": "object",
-      "required": ["valid_from", "valid_until", "areas_allowed", "biometric_type", "data", "device_type", "device_id"],
+      "required": ["vehicle", "policy_number", "provider"],
       "properties": {
-        "access_level": {
-          "type": "string",
-          "maxLength": 50,
-          "description": "Nivel de acceso (opcional)"
+        "vehicle": {
+          "title": "Vehículo",
+          "type": "integer",
+          "description": "ID del vehículo"
         },
-        "access_hours": {
-          "type": "string",
-          "maxLength": 50,
-          "description": "Horario de acceso permitido (opcional)"
+        "policy_number": {
+          "title": "Número de Póliza",
+          "type": "string"
         },
-        "valid_from": {
-          "type": "string",
-          "format": "date",
-          "description": "Fecha de inicio de validez del acceso  formato YYYY-MM-DD"
-        },
-        "valid_until": {
-          "type": "string",
-          "format": "date",
-          "description": "Fecha de fin de validez del acceso  formato YYYY-MM-DD"
-        },
-        "is_active": {
-          "type": "boolean",
-          "description": "Indica si el acceso está activo (opcional, por defecto true)"
-        },
-        "areas_allowed": {
-          "type": "string",
-          "description": "Áreas permitidas para acceso"
-        },
-        "biometric_type": {
-          "type": "string",
-          "maxLength": 100,
-          "description": "Tipo de dato biométrico (huella, iris, etc.)"
-        },
-        "data": {
-          "type": "string",
-          "description": "Datos biométricos codificados"
-        },
-        "device_type": {
-          "type": "string",
-          "maxLength": 100,
-          "description": "Tipo de dispositivo de acceso"
-        },
-        "device_id": {
-          "type": "string",
-          "maxLength": 100,
-          "description": "ID del dispositivo de acceso"
+        "provider": {
+          "title": "Proveedor",
+          "type": "string"
         }
       }
     },
-    "user_university": {
-      "type": "object",
-      "required": ["user_identifier", "user_roles", "mandatory_notification", "enrollment_date"],
-      "properties": {
-        "user_identifier": {
-          "type": "string",
-          "maxLength": 50,
-          "description": "Identificador único del usuario en la universidad"
-        },
-        "university_identifier": {
-          "type": "string",
-          "maxLength": 50,
-          "description": "Identificador de la universidad (opcional, por defecto '2b0020f3-9d2f-4a14-b5b2-dcbad34754b5')"
-        },
-        "user_roles": {
-          "type": "string",
-          "enum": ["services"],
-          "description": "Rol del usuario en la universidad, debe ser 'services'"
-        },
-        "mandatory_notification": {
-          "type": "string",
-          "enum": ["services"],
-          "description": "Rol para notificaciones obligatorias, debe coincidir con user_roles"
-        },
-        "optional_notifications": {
-          "type": "array",
-          "items": {
+    "access_control": {
+      "title": "Control de Acceso",
+      "description": "Lista de permisos de acceso del personal",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["valid_from", "valid_until", "areas_allowed", "biometric_type", "data", "device_type", "device_id"],
+        "properties": {
+          "access_level": {
+            "title": "Nivel de Acceso",
             "type": "string",
-            "description": "Nombres de notificaciones opcionales (opcional)"
+            "maxLength": 50
+          },
+          "access_hours": {
+            "title": "Horario de Acceso",
+            "type": "string",
+            "maxLength": 50
+          },
+          "vehicle": {
+            "title": "Vehículos Autorizados",
+            "type": "array",
+            "items": {
+              "type": "string",
+              "description": "Referencia al plate_number del vehículo"
+            }
+          },
+          "valid_from": {
+            "title": "Válido Desde",
+            "type": "string",
+            "format": "date"
+          },
+          "valid_until": {
+            "title": "Válido Hasta",
+            "type": "string",
+            "format": "date"
+          },
+          "is_active": {
+            "title": "Acceso Activo",
+            "type": "boolean",
+            "default": true
+          },
+          "areas_allowed": {
+            "title": "Áreas Permitidas",
+            "type": "string",
+            "minLength": 1
+          },
+          "biometric_type": {
+            "title": "Tipo de Biométrico",
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "examples": ["Fingerprint", "Retina Scan", "Face Recognition"]
+          },
+          "data": {
+            "title": "Datos Biométricos",
+            "type": "string",
+            "description": "Datos codificados o referencia al almacenamiento externo",
+            "minLength": 1
+          },
+          "device_type": {
+            "title": "Tipo de Dispositivo",
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1
+          },
+          "device_id": {
+            "title": "ID del Dispositivo",
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1
           }
-        },
-        "enrollment_date": {
-          "type": "string",
-          "format": "date",
-          "description": "Fecha de contratación en la universidad formato YYYY-MM-DD"
-        },
-        "campus": {
-          "type": "string",
-          "maxLength": 100,
-          "description": "Campus asignado (opcional)"
-        },
-        "type": {
-          "type": "string",
-          "description": "Tipo de contrato (opcional)"
-        },
-        "is_active": {
-          "type": "boolean",
-          "description": "Indica si el registro está activo (opcional, por defecto true)"
-        },
-        "last_access": {
-          "type": "string",
-          "format": "date-time",
-          "description": "Último acceso al sistema (opcional)"
         }
       }
+    },
+    "university_info": {
+      "title": "Información de la Universidad",
+      "type": "object",
+      "required": ["name", "identifier", "address", "website", "rector", "foundation_date"],
+      "properties": {
+        "name": {
+          "title": "Nombre",
+          "type": "string"
+        },
+        "identifier": {
+          "title": "Identificador",
+          "type": "string"
+        },
+        "additional_info": {
+          "title": "Información Adicional",
+          "type": "string"
+        },
+        "address": {
+          "title": "Dirección",
+          "type": "string"
+        },
+        "phone": {
+          "title": "Teléfono",
+          "type": "string"
+        },
+        "website": {
+          "title": "Sitio Web",
+          "type": "string",
+          "format": "uri"
+        },
+        "rector": {
+          "title": "Rector",
+          "type": "string"
+        },
+        "foundation_date": {
+          "title": "Fecha de Fundación",
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "notifications": {
+      "title": "Notificaciones",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "notification_type", "description", "target_roles"],
+        "properties": {
+          "name": {
+            "title": "Nombre",
+            "type": "string"
+          },
+          "notification_type": {
+            "title": "Tipo de Notificación",
+            "type": "string",
+            "enum": ["academic", "financial", "administrative", "event", "security"]
+          },
+          "description": {
+            "title": "Descripción",
+            "type": "string"
+          },
+          "is_active": {
+            "title": "Activo",
+            "type": "boolean",
+            "default": true
+          },
+          "created_at": {
+            "title": "Fecha de Creación",
+            "type": "string",
+            "format": "date-time"
+          },
+          "target_roles": {
+            "title": "Roles Objetivo",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "emergency_information": {
+      "title": "Información de Emergencia",
+      "description": "Contacto de emergencia del personal",
+      "type": "object",
+      "required": ["name", "phone", "relationship"],
+      "properties": {
+        "name": {
+          "title": "Nombre del Contacto",
+          "type": "string",
+          "maxLength": 100,
+          "minLength": 1
+        },
+        "phone": {
+          "title": "Teléfono",
+          "type": "string",
+          "pattern": "^\\+?[1-9]\\d{1,14}$",
+          "maxLength": 16,
+          "examples": ["+525512345678", "+14155552671"]
+        },
+        "relationship": {
+          "title": "Parentesco/Relación",
+          "type": "string",
+          "maxLength": 50,
+          "minLength": 1
+        },
+        "secondary_phone": {
+          "title": "Teléfono Secundario",
+          "type": "string",
+          "pattern": "^\\+?[1-9]\\d{1,14}$",
+          "maxLength": 16,
+          "examples": ["+525512345678", "+14155552671"]
+        },
+        "address": {
+          "title": "Dirección",
+          "type": "string"
+        },
+        "is_primary": {
+          "title": "Es Contacto Principal",
+          "type": "boolean",
+          "default": true
+        }
+      },
+      "additionalProperties": false
     }
   },
-  "required": [
-    "personal_information",
-    "contact_information",
-    "identification",
-    "staff_profile",
-    "user_university"
-  ]
+  "additionalProperties": false
 }

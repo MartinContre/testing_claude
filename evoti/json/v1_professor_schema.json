@@ -1,0 +1,395 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "title": "Esquema de Profesor",
+  "properties": {
+    "personal_information": {
+      "type": "object",
+      "required": ["first_name", "last_name", "second_last_name", "birth_date", "gender", "photo", "role"],
+      "properties": {
+        "first_name": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Nombre(s) del profesor"
+        },
+        "last_name": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Apellido paterno"
+        },
+        "second_last_name": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Apellido materno"
+        },
+        "birth_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Fecha de nacimiento en formato YYYY-MM-DD"
+        },
+        "gender": {
+          "type": "string",
+          "enum": ["male", "female", "other"],
+          "description": "Género del profesor"
+        },
+        "photo": {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 254,
+          "description": "URL de la fotografía del profesor"
+        },
+        "digital_signature": {
+          "type": "string",
+          "format": "uri",
+          "maxLength": 254,
+          "description": "URL de la firma digital (opcional)"
+        },
+        "role": {
+          "type": "string",
+          "enum": ["professor"],
+          "description": "Rol del usuario, debe ser 'professor' para profesores"
+        }
+      }
+    },
+    "contact_information": {
+      "type": "object",
+      "required": ["personal_email", "institutional_email"],
+      "properties": {
+        "phone": {
+          "type": "string",
+          "maxLength": 20,
+          "description": "Teléfono fijo (opcional)"
+        },
+        "cell_phone": {
+          "type": "string",
+          "maxLength": 20,
+          "description": "Teléfono celular (opcional)"
+        },
+        "personal_email": {
+          "type": "string",
+          "format": "email",
+          "description": "Correo electrónico personal"
+        },
+        "institutional_email": {
+          "type": "string",
+          "format": "email",
+          "description": "Correo electrónico institucional (único)"
+        },
+        "preferred_contact_method": {
+          "type": "string",
+          "enum": ["whatsapp", "phone", "cellphone", "email", "other"],
+          "description": "Método de contacto preferido (opcional)"
+        }
+      }
+    },
+    "identification": {
+      "type": "object",
+      "required": ["curp", "identity_number", "nationality"],
+      "properties": {
+        "curp": {
+          "type": "string",
+          "maxLength": 18,
+          "description": "CURP del profesor (único, 18 caracteres)"
+        },
+        "identity_number": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Número de identificación oficial"
+        },
+        "nationality": {
+          "type": "string",
+          "maxLength": 2,
+          "description": "Código de país ISO Alpha-2 (ej: MX, US, CA)"
+        }
+      }
+    },
+    "professor_profile": {
+      "type": "object",
+      "required": ["professor_id", "department", "work_hours", "hire_date", "academic_degree", "specialization"],
+      "properties": {
+        "professor_id": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "ID único del profesor"
+        },
+        "department": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Departamento al que pertenece"
+        },
+        "work_hours": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Horario de trabajo"
+        },
+        "hire_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Fecha de contratación formato YYYY-MM-DD"
+        },
+        "academic_degree": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Grado académico"
+        },
+        "specialization": {
+          "type": "string",
+          "maxLength": 200,
+          "description": "Especialización"
+        },
+        "is_active": {
+          "type": "boolean",
+          "description": "Profesor activo (opcional, por defecto true)"
+        },
+        "max_hours_per_week": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Máximo de horas por semana (opcional, por defecto 40)"
+        },
+        "subjects_taught": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["subject_code", "period_term_code", "group", "classroom", "schedule"],
+            "properties": {
+              "subject_code": {
+                "type": "string",
+                "maxLength": 20,
+                "description": "Código de la materia"
+              },
+              "period_term_code": {
+                "type": "string",
+                "maxLength": 20,
+                "description": "Código del período académico"
+              },
+              "group": {
+                "type": "string",
+                "maxLength": 10,
+                "description": "Grupo que imparte"
+              },
+              "classroom": {
+                "type": "string",
+                "maxLength": 20,
+                "description": "Aula asignada"
+              },
+              "schedule": {
+                "type": "string",
+                "maxLength": 100,
+                "description": "Horario de clases"
+              }
+            }
+          }
+        }
+      }
+    },
+    "emergency_information": {
+      "type": "object",
+      "required": ["name", "phone", "relationship"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Nombre del contacto de emergencia"
+        },
+        "phone": {
+          "type": "string",
+          "maxLength": 20,
+          "description": "Teléfono del contacto de emergencia"
+        },
+        "relationship": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Relación con el profesor"
+        },
+        "secondary_phone": {
+          "type": "string",
+          "maxLength": 20,
+          "description": "Teléfono secundario (opcional)"
+        },
+        "address": {
+          "type": "string",
+          "description": "Dirección del contacto de emergencia (opcional)"
+        },
+        "is_primary": {
+          "type": "boolean",
+          "description": "Indica si es el contacto principal (opcional, por defecto true)"
+        }
+      }
+    },
+    "vehicles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["plate_number", "model", "vehicle_type", "color", "year", "make"],
+        "properties": {
+          "plate_number": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "Número de placa del vehículo (único)"
+          },
+          "model": {
+            "type": "string",
+            "maxLength": 50,
+            "description": "Modelo del vehículo"
+          },
+          "vehicle_type": {
+            "type": "string",
+            "maxLength": 50,
+            "description": "Tipo de vehículo (sedán, SUV, etc.)"
+          },
+          "color": {
+            "type": "string",
+            "maxLength": 20,
+            "description": "Color del vehículo"
+          },
+          "year": {
+            "type": "integer",
+            "description": "Año del vehículo"
+          },
+          "make": {
+            "type": "string",
+            "maxLength": 50,
+            "description": "Marca del vehículo"
+          },
+          "is_active": {
+            "type": "boolean",
+            "description": "Indica si el vehículo está activo (opcional, por defecto true)"
+          },
+          "insurance_info": {
+            "type": "object",
+            "required": ["policy_number", "provider"],
+            "properties": {
+              "policy_number": {
+                "type": "string",
+                "maxLength": 50,
+                "description": "Número de póliza de seguro (único)"
+              },
+              "provider": {
+                "type": "string",
+                "maxLength": 100,
+                "description": "Compañía aseguradora"
+              }
+            }
+          }
+        }
+      }
+    },
+    "access_control": {
+      "type": "object",
+      "required": ["valid_from", "valid_until", "areas_allowed", "biometric_type", "data", "device_type", "device_id"],
+      "properties": {
+        "access_level": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Nivel de acceso (opcional)"
+        },
+        "access_hours": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Horario de acceso permitido (opcional)"
+        },
+        "valid_from": {
+          "type": "string",
+          "format": "date",
+          "description": "Fecha de inicio de validez del acceso formato YYYY-MM-DD"
+        },
+        "valid_until": {
+          "type": "string",
+          "format": "date",
+          "description": "Fecha de fin de validez del acceso formato YYYY-MM-DD"
+        },
+        "is_active": {
+          "type": "boolean",
+          "description": "Indica si el acceso está activo (opcional, por defecto true)"
+        },
+        "areas_allowed": {
+          "type": "string",
+          "description": "Áreas permitidas para acceso"
+        },
+        "biometric_type": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Tipo de dato biométrico (huella, iris, etc.)"
+        },
+        "data": {
+          "type": "string",
+          "description": "Datos biométricos codificados"
+        },
+        "device_type": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Tipo de dispositivo de acceso"
+        },
+        "device_id": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "ID del dispositivo de acceso"
+        }
+      }
+    },
+    "user_university": {
+      "type": "object",
+      "required": ["user_identifier", "user_roles", "mandatory_notification", "enrollment_date"],
+      "properties": {
+        "user_identifier": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Identificador único del usuario en la universidad"
+        },
+        "university_identifier": {
+          "type": "string",
+          "maxLength": 50,
+          "description": "Identificador de la universidad (opcional, por defecto '2b0020f3-9d2f-4a14-b5b2-dcbad34754b5')"
+        },
+        "user_roles": {
+          "type": "string",
+          "enum": ["professor"],
+          "description": "Rol del usuario en la universidad, debe ser 'professor'"
+        },
+        "mandatory_notification": {
+          "type": "string",
+          "enum": ["professor"],
+          "description": "Rol para notificaciones obligatorias, debe coincidir con user_roles"
+        },
+        "optional_notifications": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "IDs de notificaciones opcionales (opcional)"
+          }
+        },
+        "enrollment_date": {
+          "type": "string",
+          "format": "date",
+          "description": "Fecha de inscripción en la universidad  formato YYYY-MM-DD"
+        },
+        "campus": {
+          "type": "string",
+          "maxLength": 100,
+          "description": "Campus asignado (opcional)"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["secondary", "high_school", "degree", "engineer", "specialty", "master", "doctorate"],
+          "description": "Tipo de contrato o nivel (opcional)"
+        },
+        "is_active": {
+          "type": "boolean",
+          "description": "Indica si el registro está activo (opcional, por defecto true)"
+        },
+        "last_access": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Último acceso al sistema (opcional)"
+        }
+      }
+    }
+  },
+  "required": [
+    "personal_information",
+    "contact_information",
+    "identification",
+    "professor_profile",
+    "user_university"
+  ]
+}

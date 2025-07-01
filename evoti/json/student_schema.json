@@ -1,0 +1,1112 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Esquema del Estudiante",
+  "description": "Esquema completo para el registro de estudiantes con todos los modelos relacionados",
+  "type": "object",
+  "required": [
+    "personal_information",
+    "contact_information",
+    "identification",
+    "student_profile",
+    "user_university"
+  ],
+  "properties": {
+    "personal_information": {
+      "title": "Información Personal",
+      "type": "object",
+      "required": ["first_name", "last_name", "birth_date", "gender", "photo", "role"],
+      "properties": {
+        "first_name": {
+          "title": "Nombre",
+          "type": "string"
+        },
+        "last_name": {
+          "title": "Apellido Paterno",
+          "type": "string"
+        },
+        "second_last_name": {
+          "title": "Apellido Materno",
+          "type": "string"
+        },
+        "birth_date": {
+          "title": "Fecha de Nacimiento",
+          "type": "string",
+          "format": "date"
+        },
+        "gender": {
+          "title": "Género",
+          "type": "string",
+          "enum": ["male", "female", "other"]
+        },
+        "photo": {
+          "title": "Fotografía",
+          "type": "string",
+          "format": "uri"
+        },
+        "digital_signature": {
+          "title": "Firma Digital",
+          "type": "string",
+          "format": "uri"
+        },
+        "role": {
+          "title": "Rol",
+          "type": "string",
+          "enum": ["student", "services", "professor", "tester"]
+        }
+      }
+    },
+    "contact_information": {
+      "title": "Información de Contacto",
+      "type": "object",
+      "required": ["personal_email"],
+      "properties": {
+        "phone": {
+          "title": "Teléfono",
+          "type": "string"
+        },
+        "cell_phone": {
+          "title": "Teléfono Celular",
+          "type": "string"
+        },
+        "personal_email": {
+          "title": "Correo Personal",
+          "type": "string",
+          "format": "email"
+        },
+        "institutional_email": {
+          "title": "Correo Institucional",
+          "type": "string",
+          "format": "email"
+        },
+        "preferred_contact_method": {
+          "title": "Método de Contacto Preferido",
+          "type": "string",
+          "enum": ["whatsapp", "phone", "cellphone", "email", "other"]
+        }
+      }
+    },
+    "identification": {
+      "title": "Identificación",
+      "type": "object",
+      "required": ["identity_number", "nationality"],
+      "properties": {
+        "curp": {
+          "title": "CURP",
+          "type": "string"
+        },
+        "identity_number": {
+          "title": "Número de Identidad",
+          "type": "string"
+        },
+        "nationality": {
+          "title": "Nacionalidad",
+          "type": "string"
+        }
+      }
+    },
+    "student_profile": {
+      "title": "Perfil del Estudiante",
+      "type": "object",
+      "required": [
+        "student_id",
+        "career",
+        "current_grade",
+        "admission_type",
+        "admission_period",
+        "study_modality",
+        "campus",
+        "study_plan",
+        "enrollment_date",
+        "academic_status",
+        "education_level"
+      ],
+      "properties": {
+        "student_id": {
+          "title": "Matrícula",
+          "type": "string"
+        },
+        "career": {
+          "title": "Carrera",
+          "type": "string"
+        },
+        "current_grade": {
+          "title": "Grado Actual",
+          "type": "string"
+        },
+        "admission_type": {
+          "title": "Tipo de Admisión",
+          "type": "string",
+          "enum": ["regular", "transfer", "special", "international"]
+        },
+        "admission_period": {
+          "title": "Período de Admisión",
+          "type": "string"
+        },
+        "study_modality": {
+          "title": "Modalidad de Estudio",
+          "type": "string",
+          "enum": ["schooling", "mixed", "online", "intensive"]
+        },
+        "shift": {
+          "title": "Turno",
+          "type": "string",
+          "enum": ["morning", "afternoon", "evening", "night"]
+        },
+        "campus": {
+          "title": "Campus",
+          "type": "string"
+        },
+        "credits_approved": {
+          "title": "Créditos Aprobados",
+          "type": "integer",
+          "default": 0
+        },
+        "periods_completed": {
+          "title": "Períodos Completados",
+          "type": "integer",
+          "default": 0
+        },
+        "current_period": {
+          "title": "Período Actual",
+          "type": "string"
+        },
+        "study_plan": {
+          "title": "Plan de Estudios",
+          "type": "string"
+        },
+        "enrollment_date": {
+          "title": "Fecha de Inscripción",
+          "type": "string",
+          "format": "date"
+        },
+        "expected_graduation_date": {
+          "title": "Fecha Esperada de Graduación",
+          "type": "string",
+          "format": "date"
+        },
+        "is_active": {
+          "title": "Activo",
+          "type": "boolean",
+          "default": true
+        },
+        "admission_period_term_code": {
+          "title": "Código del Período de Admisión",
+          "type": "string"
+        },
+        "academic_status": {
+          "title": "Estado Académico",
+          "type": "string",
+          "enum": ["active", "inactive", "graduated", "suspended", "dropped_out"]
+        },
+        "education_level": {
+          "title": "Nivel Educativo",
+          "type": "string",
+          "enum": ["undergraduate", "graduate", "postgraduate"]
+        },
+        "generation": {
+          "title": "Generación",
+          "type": "string"
+        },
+        "generation_year": {
+          "title": "Año de Generación",
+          "type": "integer"
+        },
+        "cohort_identifier": {
+          "title": "Identificador de Cohorte",
+          "type": "string"
+        },
+        "status_change_date": {
+          "title": "Fecha de Cambio de Estado",
+          "type": "string",
+          "format": "date"
+        },
+        "withdrawal_date": {
+          "title": "Fecha de Baja",
+          "type": "string",
+          "format": "date"
+        },
+        "withdrawal_reason": {
+          "title": "Razón de Baja",
+          "type": "string"
+        }
+      }
+    },
+    "study_plan_subject": {
+      "title": "Materia del Plan de Estudios",
+      "type": "object",
+      "required": ["study_plan", "subject", "semester"],
+      "properties": {
+        "study_plan": {
+          "title": "Plan de Estudios",
+          "type": "integer",
+          "description": "ID del plan de estudios"
+        },
+        "subject": {
+          "title": "Materia",
+          "type": "integer",
+          "description": "ID de la materia"
+        },
+        "semester": {
+          "title": "Semestre",
+          "type": "integer",
+          "minimum": 1
+        },
+        "is_required": {
+          "title": "Es Obligatoria",
+          "type": "boolean",
+          "default": true
+        },
+        "min_grade": {
+          "title": "Calificación Mínima",
+          "type": "number",
+          "multipleOf": 0.01,
+          "minimum": 0,
+          "maximum": 999.99,
+          "default": 6.00
+        }
+      }
+    },
+    "user_university": {
+      "title": "Usuario Universidad",
+      "type": "object",
+      "required": [
+        "user_identifier",
+        "university_identifier",
+        "university",
+        "user_roles",
+        "mandatory_notification",
+        "enrollment_date"
+      ],
+      "properties": {
+        "user_identifier": {
+          "title": "Identificador de Usuario",
+          "type": "string"
+        },
+        "university_identifier": {
+          "title": "Identificador de Universidad",
+          "default": "2b0020f3-9d2f-4a14-b5b2-dcbad34754b5",
+          "type": "string"
+        },
+        "university": {
+          "title": "Universidad",
+          "type": "string"
+        },
+        "user_roles": {
+          "title": "Roles de Usuario",
+          "type": "string",
+          "enum": ["student", "services", "professor", "tester"]
+        },
+        "mandatory_notification": {
+          "title": "Notificación Obligatoria",
+          "type": "string",
+          "enum": ["student", "services", "professor", "tester"]
+        },
+        "optional_notifications": {
+          "title": "Notificaciones Opcionales",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "enrollment_date": {
+          "title": "Fecha de Inscripción",
+          "type": "string",
+          "format": "date"
+        },
+        "campus": {
+          "title": "Campus",
+          "type": "string"
+        },
+        "career": {
+          "title": "Carrera",
+          "type": "string"
+        },
+        "type": {
+          "title": "Tipo",
+          "type": "string",
+          "enum": ["secondary", "high_school", "degree", "engineer", "specialty", "master", "doctorate", "other"]
+        },
+        "is_active": {
+          "title": "Activo",
+          "type": "boolean",
+          "default": true
+        },
+        "last_access": {
+          "title": "Último Acceso",
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "academic_profile": {
+      "title": "Perfil Académico",
+      "type": "object",
+      "properties": {
+        "previous_school": {
+          "title": "Escuela Anterior",
+          "type": "string"
+        },
+        "study_interest": {
+          "title": "Interés de Estudio",
+          "type": "string"
+        },
+        "academic_offer": {
+          "title": "Oferta Académica",
+          "type": "string"
+        }
+      }
+    },
+    "admission_data": {
+      "title": "Datos de Admisión",
+      "type": "object",
+      "properties": {
+        "found_out_through": {
+          "title": "Se Enteró Por",
+          "type": "string"
+        },
+        "educational_advisor": {
+          "title": "Asesor Educativo",
+          "type": "string"
+        },
+        "comments": {
+          "title": "Comentarios",
+          "type": "string"
+        }
+      }
+    },
+    "financial_information": {
+      "title": "Información Financiera",
+      "type": "object",
+      "properties": {
+        "total_debt": {
+          "title": "Deuda Total",
+          "type": "number",
+          "default": 0.00
+        },
+        "overdue_balance": {
+          "title": "Saldo Vencido",
+          "type": "number",
+          "default": 0.00
+        },
+        "last_payment_date": {
+          "title": "Fecha del Último Pago",
+          "type": "string",
+          "format": "date"
+        },
+        "last_payment_amount": {
+          "title": "Cantidad del Último Pago",
+          "type": "number"
+        },
+        "payment_plan": {
+          "title": "Plan de Pagos",
+          "type": "string"
+        },
+        "scholarship": {
+          "title": "Beca",
+          "type": "string"
+        },
+        "discount": {
+          "title": "Descuento",
+          "type": "number",
+          "default": 0.00
+        }
+      }
+    },
+    "emergency_information": {
+      "title": "Información de Emergencia",
+      "type": "object",
+      "required": ["name", "relationship"],
+      "properties": {
+        "name": {
+          "title": "Nombre",
+          "type": "string"
+        },
+        "phone": {
+          "title": "Teléfono",
+          "type": "string"
+        },
+        "relationship": {
+          "title": "Parentesco",
+          "type": "string"
+        },
+        "secondary_phone": {
+          "title": "Teléfono Secundario",
+          "type": "string"
+        },
+        "address": {
+          "title": "Dirección",
+          "type": "string"
+        },
+        "is_primary": {
+          "title": "Es Primario",
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "vehicles": {
+      "title": "Vehículos",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["plate_number", "model", "vehicle_type", "color", "year", "make"],
+        "properties": {
+          "plate_number": {
+            "title": "Número de Placa",
+            "type": "string"
+          },
+          "model": {
+            "title": "Modelo",
+            "type": "string"
+          },
+          "vehicle_type": {
+            "title": "Tipo de Vehículo",
+            "type": "string"
+          },
+          "color": {
+            "title": "Color",
+            "type": "string"
+          },
+          "year": {
+            "title": "Año",
+            "type": "integer"
+          },
+          "make": {
+            "title": "Marca",
+            "type": "string"
+          },
+          "is_active": {
+            "title": "Activo",
+            "type": "boolean",
+            "default": true
+          },
+          "insurance_info": {
+            "title": "Información del Seguro",
+            "type": "object",
+            "properties": {
+              "policy_number": {
+                "title": "Número de Póliza",
+                "type": "string"
+              },
+              "provider": {
+                "title": "Proveedor",
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "insurance_information": {
+      "title": "Información del Seguro",
+      "type": "object",
+      "required": ["vehicle", "policy_number", "provider"],
+      "properties": {
+        "vehicle": {
+          "title": "Vehículo",
+          "type": "integer",
+          "description": "ID del vehículo"
+        },
+        "policy_number": {
+          "title": "Número de Póliza",
+          "type": "string"
+        },
+        "provider": {
+          "title": "Proveedor",
+          "type": "string"
+        }
+      }
+    },
+    "access_control": {
+      "title": "Control de Acceso",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["valid_from", "valid_until", "areas_allowed", "biometric_type", "data", "device_type", "device_id"],
+        "properties": {
+          "access_level": {
+            "title": "Nivel de Acceso",
+            "type": "string"
+          },
+          "access_hours": {
+            "title": "Horarios de Acceso",
+            "type": "string"
+          },
+          "vehicle": {
+            "title": "Vehículos",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "valid_from": {
+            "title": "Válido Desde",
+            "type": "string",
+            "format": "date"
+          },
+          "valid_until": {
+            "title": "Válido Hasta",
+            "type": "string",
+            "format": "date"
+          },
+          "is_active": {
+            "title": "Activo",
+            "type": "boolean",
+            "default": true
+          },
+          "areas_allowed": {
+            "title": "Áreas Permitidas",
+            "type": "string"
+          },
+          "biometric_type": {
+            "title": "Tipo Biométrico",
+            "type": "string"
+          },
+          "data": {
+            "title": "Datos",
+            "type": "string"
+          },
+          "device_type": {
+            "title": "Tipo de Dispositivo",
+            "type": "string"
+          },
+          "device_id": {
+            "title": "ID del Dispositivo",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "enrollments": {
+      "title": "Inscripciones",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["subject", "period", "enrollment_date", "group"],
+        "properties": {
+          "subject": {
+            "title": "Materia",
+            "type": "string"
+          },
+          "period": {
+            "title": "Período",
+            "type": "string"
+          },
+          "enrollment_date": {
+            "title": "Fecha de Inscripción",
+            "type": "string",
+            "format": "date"
+          },
+          "final_grade": {
+            "title": "Calificación Final",
+            "type": "number"
+          },
+          "status": {
+            "title": "Estado",
+            "type": "string",
+            "enum": ["approved", "failed", "in_progress", "withdrawn"]
+          },
+          "attempt_number": {
+            "title": "Número de Intento",
+            "type": "integer",
+            "default": 1
+          },
+          "group": {
+            "title": "Grupo",
+            "type": "string"
+          },
+          "professor": {
+            "title": "Profesor",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "academic_records": {
+      "title": "Historial Académico",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["period", "start_date"],
+        "properties": {
+          "period": {
+            "title": "Período",
+            "type": "string"
+          },
+          "status": {
+            "title": "Estado",
+            "type": "string",
+            "enum": ["active", "inactive", "graduated", "suspended", "dropped_out"]
+          },
+          "start_date": {
+            "title": "Fecha de Inicio",
+            "type": "string",
+            "format": "date"
+          },
+          "end_date": {
+            "title": "Fecha de Fin",
+            "type": "string",
+            "format": "date"
+          },
+          "reason": {
+            "title": "Razón",
+            "type": "string"
+          },
+          "comments": {
+            "title": "Comentarios",
+            "type": "string"
+          },
+          "is_regular": {
+            "title": "Es Regular",
+            "type": "boolean",
+            "default": true
+          },
+          "scholarship": {
+            "title": "Beca",
+            "type": "string"
+          },
+          "average": {
+            "title": "Promedio",
+            "type": "number"
+          },
+          "withdrawal_date": {
+            "title": "Fecha de Baja",
+            "type": "string",
+            "format": "date"
+          },
+          "withdrawal_reason": {
+            "title": "Razón de Baja",
+            "type": "string"
+          },
+          "re_enrollment_date": {
+            "title": "Fecha de Reinscripción",
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    },
+    "payments": {
+      "title": "Pagos",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["payment_type", "amount", "payment_date", "period", "receipt_number", "payment_method", "due_date"],
+        "properties": {
+          "payment_type": {
+            "title": "Tipo de Pago",
+            "type": "string",
+            "enum": ["enrollment", "monthly", "degree", "library", "lab", "other"]
+          },
+          "amount": {
+            "title": "Cantidad",
+            "type": "number"
+          },
+          "payment_date": {
+            "title": "Fecha de Pago",
+            "type": "string",
+            "format": "date"
+          },
+          "status": {
+            "title": "Estado",
+            "type": "string",
+            "enum": ["pending", "completed", "partial", "cancelled", "waived", "refunded"]
+          },
+          "period": {
+            "title": "Período",
+            "type": "string"
+          },
+          "receipt_number": {
+            "title": "Número de Recibo",
+            "type": "string"
+          },
+          "payment_method": {
+            "title": "Método de Pago",
+            "type": "string"
+          },
+          "description": {
+            "title": "Descripción",
+            "type": "string"
+          },
+          "due_date": {
+            "title": "Fecha de Vencimiento",
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    },
+    "graduation": {
+      "title": "Graduación",
+      "type": "object",
+      "required": ["graduation_date", "modality", "title", "final_grade", "diploma_number", "graduation_period"],
+      "properties": {
+        "graduation_date": {
+          "title": "Fecha de Graduación",
+          "type": "string",
+          "format": "date"
+        },
+        "modality": {
+          "title": "Modalidad",
+          "type": "string",
+          "enum": ["thesis", "exam", "work_exp", "special_study"]
+        },
+        "title": {
+          "title": "Título",
+          "type": "string"
+        },
+        "thesis_title": {
+          "title": "Título de Tesis",
+          "type": "string"
+        },
+        "advisor": {
+          "title": "Asesor",
+          "type": "string"
+        },
+        "final_grade": {
+          "title": "Calificación Final",
+          "type": "number"
+        },
+        "honors": {
+          "title": "Honores",
+          "type": "string"
+        },
+        "ceremony_date": {
+          "title": "Fecha de Ceremonia",
+          "type": "string",
+          "format": "date"
+        },
+        "diploma_number": {
+          "title": "Número de Diploma",
+          "type": "string"
+        },
+        "graduation_period": {
+          "title": "Período de Graduación",
+          "type": "string"
+        }
+      }
+    },
+    "subjects": {
+      "title": "Materias",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["code", "name", "credits", "hours_per_week", "total_hours", "department", "type"],
+        "properties": {
+          "code": {
+            "title": "Código",
+            "type": "string"
+          },
+          "name": {
+            "title": "Nombre",
+            "type": "string"
+          },
+          "description": {
+            "title": "Descripción",
+            "type": "string"
+          },
+          "credits": {
+            "title": "Créditos",
+            "type": "integer"
+          },
+          "is_active": {
+            "title": "Activo",
+            "type": "boolean",
+            "default": true
+          },
+          "prerequisites": {
+            "title": "Prerrequisitos",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "core_requirement": {
+            "title": "Materia Obligatoria",
+            "type": "boolean",
+            "default": false
+          },
+          "hours_per_week": {
+            "title": "Horas por Semana",
+            "type": "integer"
+          },
+          "total_hours": {
+            "title": "Horas Totales",
+            "type": "integer"
+          },
+          "department": {
+            "title": "Departamento",
+            "type": "string"
+          },
+          "duration_weeks": {
+            "title": "Duración en Semanas",
+            "type": "integer",
+            "default": 16
+          },
+          "type": {
+            "title": "Tipo",
+            "type": "string",
+            "enum": ["core", "elective", "optional", "lab", "seminar", "thesis"]
+          }
+        }
+      }
+    },
+    "academic_periods": {
+      "title": "Períodos Académicos",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "start_date", "end_date", "cohort", "registration_start", "registration_end", "term_code", "academic_year", "period_number", "period_type"],
+        "properties": {
+          "name": {
+            "title": "Nombre",
+            "type": "string"
+          },
+          "start_date": {
+            "title": "Fecha de Inicio",
+            "type": "string",
+            "format": "date"
+          },
+          "end_date": {
+            "title": "Fecha de Fin",
+            "type": "string",
+            "format": "date"
+          },
+          "is_active": {
+            "title": "Activo",
+            "type": "boolean",
+            "default": false
+          },
+          "parent_period": {
+            "title": "Período Padre",
+            "type": "string"
+          },
+          "cohort": {
+            "title": "Cohorte",
+            "type": "string"
+          },
+          "registration_start": {
+            "title": "Inicio de Registro",
+            "type": "string",
+            "format": "date"
+          },
+          "registration_end": {
+            "title": "Fin de Registro",
+            "type": "string",
+            "format": "date"
+          },
+          "term_code": {
+            "title": "Código del Período",
+            "type": "string"
+          },
+          "academic_year": {
+            "title": "Año Académico",
+            "type": "integer"
+          },
+          "period_number": {
+            "title": "Número de Período",
+            "type": "integer"
+          },
+          "period_type": {
+            "title": "Tipo de Período",
+            "type": "string",
+            "enum": ["semester", "summer", "quarter", "intensive", "trimester", "winter", "online", "continuous"]
+          },
+          "is_regular_period": {
+            "title": "Es Período Regular",
+            "type": "boolean",
+            "default": true
+          },
+          "next_period": {
+            "title": "Siguiente Período",
+            "type": "string"
+          }
+        }
+      }
+    },
+    "career": {
+      "title": "Carrera",
+      "type": "object",
+      "required": ["name", "code", "description", "duration_semesters", "total_credits", "faculty"],
+      "properties": {
+        "name": {
+          "title": "Nombre",
+          "type": "string"
+        },
+        "code": {
+          "title": "Código",
+          "type": "string"
+        },
+        "description": {
+          "title": "Descripción",
+          "type": "string"
+        },
+        "duration_semesters": {
+          "title": "Duración en Semestres",
+          "type": "integer"
+        },
+        "total_credits": {
+          "title": "Créditos Totales",
+          "type": "integer"
+        },
+        "is_active": {
+          "title": "Activo",
+          "type": "boolean",
+          "default": true
+        },
+        "study_plans": {
+          "title": "Planes de Estudio",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "faculty": {
+          "title": "Facultad",
+          "type": "string"
+        },
+        "accreditation": {
+          "title": "Acreditación",
+          "type": "string"
+        },
+        "accreditation_valid_until": {
+          "title": "Acreditación Válida Hasta",
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "study_plan": {
+      "title": "Plan de Estudios",
+      "type": "object",
+      "required": ["name", "version", "start_date", "total_credits", "required_credits", "elective_credits"],
+      "properties": {
+        "name": {
+          "title": "Nombre",
+          "type": "string"
+        },
+        "version": {
+          "title": "Versión",
+          "type": "string"
+        },
+        "start_date": {
+          "title": "Fecha de Inicio",
+          "type": "string",
+          "format": "date"
+        },
+        "end_date": {
+          "title": "Fecha de Fin",
+          "type": "string",
+          "format": "date"
+        },
+        "is_active": {
+          "title": "Activo",
+          "type": "boolean",
+          "default": true
+        },
+        "total_credits": {
+          "title": "Créditos Totales",
+          "type": "integer"
+        },
+        "required_credits": {
+          "title": "Créditos Obligatorios",
+          "type": "integer"
+        },
+        "elective_credits": {
+          "title": "Créditos Electivos",
+          "type": "integer"
+        },
+        "subjects": {
+          "title": "Materias",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "duration_in_periods": {
+          "title": "Duración en Períodos",
+          "type": "integer",
+          "default": 8
+        }
+      }
+    },
+    "university_info": {
+      "title": "Información de la Universidad",
+      "type": "object",
+      "required": ["name", "identifier", "address", "website", "rector", "foundation_date"],
+      "properties": {
+        "name": {
+          "title": "Nombre",
+          "type": "string"
+        },
+        "identifier": {
+          "title": "Identificador",
+          "type": "string"
+        },
+        "additional_info": {
+          "title": "Información Adicional",
+          "type": "string"
+        },
+        "address": {
+          "title": "Dirección",
+          "type": "string"
+        },
+        "phone": {
+          "title": "Teléfono",
+          "type": "string"
+        },
+        "website": {
+          "title": "Sitio Web",
+          "type": "string",
+          "format": "uri"
+        },
+        "rector": {
+          "title": "Rector",
+          "type": "string"
+        },
+        "foundation_date": {
+          "title": "Fecha de Fundación",
+          "type": "string",
+          "format": "date"
+        }
+      }
+    },
+    "notifications": {
+      "title": "Notificaciones",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "notification_type", "description", "target_roles"],
+        "properties": {
+          "name": {
+            "title": "Nombre",
+            "type": "string"
+          },
+          "notification_type": {
+            "title": "Tipo de Notificación",
+            "type": "string",
+            "enum": ["academic", "financial", "administrative", "event", "security"]
+          },
+          "description": {
+            "title": "Descripción",
+            "type": "string"
+          },
+          "is_active": {
+            "title": "Activo",
+            "type": "boolean",
+            "default": true
+          },
+          "created_at": {
+            "title": "Fecha de Creación",
+            "type": "string",
+            "format": "date-time"
+          },
+          "target_roles": {
+            "title": "Roles Objetivo",
+            "type": "string"
+          }
+        }
+      }
+    }      
+  }
+}
